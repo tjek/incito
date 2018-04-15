@@ -1,6 +1,9 @@
 {
     "type": "object",
+    "title": "Incito v1.0.0",
     "description": "Incito",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$id": "https://example.com/schemas/definitions",
     "properties": {
         "id": {
             "type": "string",
@@ -26,8 +29,7 @@
         },
         "root_view": {
             "description": "The main view entry point for the Incito.",
-            "$ref": "#/definitions/views",
-            "$linkVal": "views"
+            "$ref": "#/definitions/views"
         },
         "font_assets": {
             "type": "object",
@@ -93,7 +95,7 @@
                     "$ref": "#/definitions/absoluteLayout"
                 },
                 {
-                    "$ref": "#/defƒinitions/linearLayout"
+                    "$ref": "#/definitions/linearLayout"
                 },
                 {
                     "$ref": "#/definitions/flexLayout"
@@ -114,7 +116,6 @@
         },
         "view": {
             "type": "object",
-            "required": [],
             "properties": {
                 "view_name": {
                     "enum": [
@@ -137,8 +138,7 @@
                 "child_views": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/views",
-                        "$linkVal": "views"
+                        "$ref": "#/definitions/views"
                     }
                 },
                 "background_color": {
@@ -545,8 +545,7 @@
                 "child_views": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/views",
-                        "$linkVal": "views"
+                        "$ref": "#/definitions/views"
                     }
                 },
                 "background_color": {
@@ -875,7 +874,6 @@
         },
         "absoluteLayout": {
             "type": "object",
-            "required": [],
             "properties": {
                 "view_name": {
                     "enum": [
@@ -898,8 +896,7 @@
                 "child_views": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/views",
-                        "$linkVal": "views"
+                        "$ref": "#/definitions/views"
                     }
                 },
                 "background_color": {
@@ -1228,7 +1225,6 @@
         },
         "linearLayout": {
             "type": "object",
-            "required": [],
             "properties": {
                 "view_name": {
                     "enum": [
@@ -1251,8 +1247,7 @@
                 "child_views": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/views",
-                        "$linkVal": "views"
+                        "$ref": "#/definitions/views"
                     }
                 },
                 "background_color": {
@@ -1581,7 +1576,6 @@
         },
         "flexLayout": {
             "type": "object",
-            "required": [],
             "properties": {
                 "view_name": {
                     "enum": [
@@ -1618,8 +1612,7 @@
                 "child_views": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/views",
-                        "$linkVal": "views"
+                        "$ref": "#/definitions/views"
                     }
                 },
                 "background_color": {
@@ -1948,7 +1941,6 @@
         },
         "fragView": {
             "type": "object",
-            "required": [],
             "properties": {
                 "view_name": {
                     "enum": [
@@ -1971,8 +1963,7 @@
                 "child_views": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/views",
-                        "$linkVal": "views"
+                        "$ref": "#/definitions/views"
                     }
                 },
                 "background_color": {
@@ -2334,8 +2325,7 @@
                 "child_views": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/views",
-                        "$linkVal": "views"
+                        "$ref": "#/definitions/views"
                     }
                 },
                 "background_color": {
@@ -2694,8 +2684,7 @@
                 "child_views": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/views",
-                        "$linkVal": "views"
+                        "$ref": "#/definitions/views"
                     }
                 },
                 "background_color": {
@@ -3070,8 +3059,7 @@
                 "child_views": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/views",
-                        "$linkVal": "views"
+                        "$ref": "#/definitions/views"
                     }
                 },
                 "background_color": {

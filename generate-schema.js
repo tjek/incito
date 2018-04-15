@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-function createView (viewName = 'View', properties = {}, required = []) {
+function createView (viewName = 'View', properties = {}, required) {
     return {
         type: 'object',
         required,
@@ -26,8 +26,7 @@ function createView (viewName = 'View', properties = {}, required = []) {
             child_views: {
                 type: 'array',
                 items: {
-                    $ref: '#/definitions/views',
-                    $linkVal: 'views'
+                    $ref: '#/definitions/views'
                 }
             },
             background_color: {
@@ -358,7 +357,10 @@ function createView (viewName = 'View', properties = {}, required = []) {
 
 const schema = {
     type: 'object',
+    title: 'Incito v1.0.0',
     description: 'Incito',
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$id": "https://example.com/schemas/definitions",
     properties: {
         id: {
             type: 'string',
@@ -384,8 +386,7 @@ const schema = {
         },
         root_view: {
             description: 'The main view entry point for the Incito.',
-            $ref: '#/definitions/views',
-            $linkVal: 'views'
+            $ref: '#/definitions/views'
         },
         font_assets: {
             type: 'object',
@@ -460,7 +461,7 @@ const schema = {
             }, {
                 $ref: '#/definitions/absoluteLayout'
             }, {
-                $ref: '#/defƒinitions/linearLayout'
+                $ref: '#/definitions/linearLayout'
             }, {
                 $ref: '#/definitions/flexLayout'
             }, {
@@ -473,7 +474,7 @@ const schema = {
                 $ref: '#/definitions/videoView'
             }]
         },
-        view: createView('View', {}, []),
+        view: createView('View', {}),
         textView: createView('TextView', {
             text_all_caps: {
                 type: 'boolean'
@@ -529,8 +530,8 @@ const schema = {
                 minimum: 1
             }
         }, ['text']),
-        absoluteLayout: createView('AbsoluteLayout', {}, []),
-        linearLayout: createView('LinearLayout', {}, []),
+        absoluteLayout: createView('AbsoluteLayout', {}),
+        linearLayout: createView('LinearLayout', {}),
         flexLayout: createView('FlexLayout', {
             layout_flex_align_items: {
                 type: 'string',
@@ -546,8 +547,8 @@ const schema = {
             layout_flex_grow: {
                 type: 'number'
             }
-        }, []),
-        fragView: createView('FragView', {}, []),
+        }),
+        fragView: createView('FragView', {}),
         imageView: createView('ImageView', {
             src: {
                 type: 'string',
@@ -589,4 +590,4 @@ const schema = {
     }
 };
 
-fs.writeFileSync(path.join(__dirname, 'incito.schema.json'), JSON.stringify(schema, null, 4));
+fs.writeFileSync(path.join(__dirname, 'schemas', 'v1.0.0.schema.json'), JSON.stringify(schema, null, 4));

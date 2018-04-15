@@ -2,9 +2,6 @@
   "name": "incito",
   "version": "1.0.0",
   "description": "Incito is a platform agnostic way to define layout using [JSON](https://www.json.org).",
-  "scripts": {
-    "prepare": "node versions/1.0.0/generate-schema && jsonschema2md -o versions/1.0.0 -d versions/1.0.0/incito.schema.json no-readme"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shopgun/incito.git"
