@@ -15,10 +15,14 @@ However, while great in many regards it also has some downsides:
 
 - One size fits all.
 
-## Generator
+## Versions
+
+- [v1.0.0](/schemas/v1.0.0.json)
 
 ## Libraries
 
 - [JavaScript](https://github.com/shopgun/incito-browser)
 - iOS (under development)
 - Android (under development)
+
+## Generator

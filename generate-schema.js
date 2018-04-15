@@ -590,4 +590,4 @@ const schema = {
     }
 };
 
-fs.writeFileSync(path.join(__dirname, 'schemas', 'v1.0.0.schema.json'), JSON.stringify(schema, null, 4));
+fs.writeFileSync(path.join(__dirname, 'schemas', 'v1.0.0.json'), JSON.stringify(schema, null, 4));
