@@ -18,7 +18,7 @@ Incito
 | [id](#id) | `string` | **Required** |  (this schema) |
 | [locale](#locale) | `string` | Optional |  (this schema) |
 | [meta](#meta) | `object` | Optional |  (this schema) |
-| [root_view](#root_view) | reference | **Required** |  (this schema) |
+| [root_view](#root_view) | complex | **Required** |  (this schema) |
 | [theme](#theme) | `object` | Optional |  (this schema) |
 | [version](#version) | `enum` | **Required** |  (this schema) |
 | `*` | any | Additional | this schema *allows* additional properties |
@@ -112,13 +112,68 @@ The main view entry point for the Incito.
 
 `root_view`
 * is **required**
-* type: reference
+* type: complex
 * defined in this schema
 
 ### root_view Type
 
 
-* []() – `#/definitions/views`
+**One** of the following *conditions* need to be fulfilled.
+
+
+#### Condition 1
+
+
+* []() – `#/definitions/view`
+
+
+#### Condition 2
+
+
+* []() – `#/definitions/textView`
+
+
+#### Condition 3
+
+
+* []() – `#/definitions/absoluteLayout`
+
+
+#### Condition 4
+
+
+* []() – `#/definitions/linearLayout`
+
+
+#### Condition 5
+
+
+* []() – `#/definitions/flexLayout`
+
+
+#### Condition 6
+
+
+* []() – `#/definitions/fragView`
+
+
+#### Condition 7
+
+
+* []() – `#/definitions/imageView`
+
+
+#### Condition 8
+
+
+* []() – `#/definitions/videoEmbedView`
+
+
+#### Condition 9
+
+
+* []() – `#/definitions/videoView`
+
 
 
 
@@ -268,7 +323,7 @@ The value of this property **must** be equal to one of the [known values below](
 | [background_image_position](#background_image_position) | `string` | `#/definitions/videoView` |
 | [background_image_scale_type](#background_image_scale_type) | `enum` | `#/definitions/videoView` |
 | [background_tile_mode](#background_tile_mode) | `enum` | `#/definitions/videoView` |
-| [child_views](#child_views) | reference | `#/definitions/videoView` |
+| [child_views](#child_views) | `array` | `#/definitions/videoView` |
 | [clip_children](#clip_children) | `boolean` | `#/definitions/videoView` |
 | [corner_bottom_left_radius](#corner_bottom_left_radius) | complex | `#/definitions/videoView` |
 | [corner_bottom_right_radius](#corner_bottom_right_radius) | complex | `#/definitions/videoView` |
@@ -469,17 +524,57 @@ The value of this property **must** be equal to one of the [known values below](
 
 `child_views`
 * is optional
-* type: reference
+* type: `array`
 
 * defined in this schema
 
 ### child_views Type
 
 
-Array type: reference
+Array type: `array`
 
 All items must be of the type:
-* []() – `#/definitions/views`
+Unknown type ``.
+
+```json
+{
+  "type": "array",
+  "items": {
+    "oneOf": [
+      {
+        "$ref": "#/definitions/view"
+      },
+      {
+        "$ref": "#/definitions/textView"
+      },
+      {
+        "$ref": "#/definitions/absoluteLayout"
+      },
+      {
+        "$ref": "#/definitions/linearLayout"
+      },
+      {
+        "$ref": "#/definitions/flexLayout"
+      },
+      {
+        "$ref": "#/definitions/fragView"
+      },
+      {
+        "$ref": "#/definitions/imageView"
+      },
+      {
+        "$ref": "#/definitions/videoEmbedView"
+      },
+      {
+        "$ref": "#/definitions/videoView"
+      }
+    ],
+    "simpletype": "complex"
+  },
+  "definitiongroup": "videoView",
+  "simpletype": "`array`"
+}
+```
 
 
 
