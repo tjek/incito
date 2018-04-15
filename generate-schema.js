@@ -1,6 +1,3 @@
-const fs = require('fs');
-const path = require('path');
-
 function createView (viewName = 'View', properties = {}, required) {
     return {
         type: 'object',
@@ -358,9 +355,7 @@ function createView (viewName = 'View', properties = {}, required) {
 const schema = {
     type: 'object',
     title: 'Incito v1.0.0',
-    description: 'Incito',
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "$id": "https://example.com/schemas/definitions",
+    description: 'Layout format',
     properties: {
         id: {
             type: 'string',
@@ -397,19 +392,19 @@ const schema = {
                     type: 'object',
                     description: 'External font asset',
                     properties: {
-                        // src: {
-                        //     type: 'array',
-                        //     items: {
-                        //         type: 'array',
-                        //         items: {
-                        //             type: 'string',
-                        //             minLength: 1
-                        //         },
-                        //         minItems: 2,
-                        //         maxItems: 2
-                        //     },
-                        //     required: true
-                        // },
+                        src: {
+                            type: 'array',
+                            items: {
+                                type: 'array',
+                                items: {
+                                    type: 'string',
+                                    minLength: 1
+                                },
+                                minItems: 2,
+                                maxItems: 2
+                            },
+                            required: true
+                        },
                         weight: {
                             type: 'string',
                             minLength: 1
@@ -590,4 +585,4 @@ const schema = {
     }
 };
 
-fs.writeFileSync(path.join(__dirname, 'schemas', 'v1.0.0.json'), JSON.stringify(schema, null, 4));
+module.exports = schema;

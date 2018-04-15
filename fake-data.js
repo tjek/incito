@@ -1,5 +1,5 @@
 const jsf = require('json-schema-faker');
-const schema = require('./schemas/v1.0.0');
+const schema = require('./generate-schema');
 
 jsf.option({
     alwaysFakeOptionals: true
