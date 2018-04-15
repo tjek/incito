@@ -2,16 +2,14 @@ function createView (viewName = 'View', properties = {}, required = []) {
     return {
         type: 'object',
         required,
-        properties: Object.assign({
+        properties: Object.assign({}, {
+            view_name: {
+                enum: [viewName]
+            }
+        }, properties, {
             id: {
                 type: 'string',
                 minLength: 1
-            },
-            child_views: {
-                type: 'array',
-                items: {
-                    '$ref': '#/definitions/views'
-                }
             },
             role: {
                 type: 'string',
@@ -21,6 +19,12 @@ function createView (viewName = 'View', properties = {}, required = []) {
                 type: 'object',
                 minProperties: 1,
                 description: 'Container for meta data'
+            },
+            child_views: {
+                type: 'array',
+                items: {
+                    '$ref': '#/definitions/views'
+                }
             },
             background_color: {
                 type: 'string',
@@ -344,130 +348,9 @@ function createView (viewName = 'View', properties = {}, required = []) {
                 format: 'uri',
                 minLength: 1
             }
-        }, properties, {
-            view_name: {
-                type: 'string',
-                enum: [viewName]
-            }
         })
     };
 }
-
-const views = [
-    createView('View', {}, []),
-    createView('TextView', {
-        text_all_caps: {
-            type: 'boolean'
-        },
-        font_family: {
-            type: 'array',
-            items: {
-                type: 'string',
-                minLength: 1
-            },
-            minItems: 1
-        },
-        text: {
-            type: 'string',
-            minLength: 1
-        },
-        text_color: {
-            type: 'string',
-            minLength: 1
-        },
-        text_alignment: {
-            type: 'string',
-            minLength: 1
-        },
-        text_size: {
-            type: 'number',
-            minimum: 0
-        },
-        font_stretch: {
-            type: 'string',
-            minLength: 1
-        },
-        text_style: {
-            type: 'string'
-        },
-        spans: {
-            type: 'array',
-            items: {
-                type: 'object',
-                properties: {
-                    start: {
-                        type: 'integer'
-                    },
-                    end: {
-                        type: 'integer'
-                    }
-                }
-            },
-            minItems: 1
-        },
-        max_lines: {
-            type: 'integer',
-            minimum: 1
-        }
-    }, ['text']),
-    createView('AbsoluteLayout', {}, []),
-    createView('LinearLayout', {}, []),
-    createView('FlexLayout', {
-        layout_flex_align_items: {
-            type: 'string',
-            minLength: 1
-        },
-        layout_flex_justify_content: {
-            type: 'string',
-            minLength: 1
-        },
-        layout_flex_shrink: {
-            type: 'number'
-        },
-        layout_flex_grow: {
-            type: 'number'
-        }
-    }, []),
-    createView('FragView', {}, []),
-    createView('ImageView', {
-        src: {
-            type: 'string',
-            format: 'uri',
-            minLength: 1
-        },
-        label: {
-            type: 'string'
-        }
-    }, ['src']),
-    createView('VideoEmbedView', {
-        src: {
-            type: 'string',
-            format: 'uri',
-            minLength: 1
-        },
-    }, ['src']),
-    createView('VideoView', {
-        video_width: {
-            type: [
-                'string',
-                'number'
-            ],
-            minLength: 1
-        },
-        video_height: {
-            type: [
-                'string',
-                'number'
-            ],
-            minLength: 1
-        },
-        src: {
-            type: 'string',
-            format: 'uri',
-            minLength: 1
-        }
-    }, ['video_width', 'video_height', 'src'])
-];
 
 module.exports = () => {
     return {
@@ -496,7 +379,7 @@ module.exports = () => {
                 description: 'Container for meta data'
             },
             root_view: {
-                oneOf: views
+                '$ref': '#/definitions/views'
             },
             font_assets: {
                 type: 'object',
@@ -564,8 +447,139 @@ module.exports = () => {
         ],
         definitions: {
             views: {
-                oneOf: views
-            }
+                oneOf: [{
+                    '$ref': '#/definitions/view'
+                }, {
+                    '$ref': '#/definitions/textView'
+                }, {
+                    '$ref': '#/definitions/absoluteLayout'
+                }, {
+                    '$ref': '#/definitions/linearLayout'
+                }, {
+                    '$ref': '#/definitions/flexLayout'
+                }, {
+                    '$ref': '#/definitions/fragView'
+                }, {
+                    '$ref': '#/definitions/imageView'
+                }, {
+                    '$ref': '#/definitions/videoEmbedView'
+                }, {
+                    '$ref': '#/definitions/videoView'
+                }]
+            },
+            view: createView('View', {}, []),
+            textView: createView('TextView', {
+                text_all_caps: {
+                    type: 'boolean'
+                },
+                font_family: {
+                    type: 'array',
+                    items: {
+                        type: 'string',
+                        minLength: 1
+                    },
+                    minItems: 1
+                },
+                text: {
+                    type: 'string',
+                    minLength: 1
+                },
+                text_color: {
+                    type: 'string',
+                    minLength: 1
+                },
+                text_alignment: {
+                    type: 'string',
+                    minLength: 1
+                },
+                text_size: {
+                    type: 'number',
+                    minimum: 0
+                },
+                font_stretch: {
+                    type: 'string',
+                    minLength: 1
+                },
+                text_style: {
+                    type: 'string'
+                },
+                spans: {
+                    type: 'array',
+                    items: {
+                        type: 'object',
+                        properties: {
+                            start: {
+                                type: 'integer'
+                            },
+                            end: {
+                                type: 'integer'
+                            }
+                        }
+                    },
+                    minItems: 1
+                },
+                max_lines: {
+                    type: 'integer',
+                    minimum: 1
+                }
+            }, ['text']),
+            absoluteLayout: createView('AbsoluteLayout', {}, []),
+            linearLayout: createView('LinearLayout', {}, []),
+            flexLayout: createView('FlexLayout', {
+                layout_flex_align_items: {
+                    type: 'string',
+                    minLength: 1
+                },
+                layout_flex_justify_content: {
+                    type: 'string',
+                    minLength: 1
+                },
+                layout_flex_shrink: {
+                    type: 'number'
+                },
+                layout_flex_grow: {
+                    type: 'number'
+                }
+            }, []),
+            fragView: createView('FragView', {}, []),
+            imageView: createView('ImageView', {
+                src: {
+                    type: 'string',
+                    format: 'uri',
+                    minLength: 1
+                },
+                label: {
+                    type: 'string'
+                }
+            }, ['src']),
+            videoEmbedView: createView('VideoEmbedView', {
+                src: {
+                    type: 'string',
+                    format: 'uri',
+                    minLength: 1
+                },
+            }, ['src']),
+            videoView: createView('VideoView', {
+                video_width: {
+                    type: [
+                        'string',
+                        'number'
+                    ],
+                    minLength: 1
+                },
+                video_height: {
+                    type: [
+                        'string',
+                        'number'
+                    ],
+                    minLength: 1
+                },
+                src: {
+                    type: 'string',
+                    format: 'uri',
+                    minLength: 1
+                }
+            }, ['video_width', 'video_height', 'src'])
         }
     };
 };
