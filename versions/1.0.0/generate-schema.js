@@ -1,3 +1,6 @@
+const fs = require('fs');
+const path = require('path');
+
 function createView (viewName = 'View', properties = {}, required = []) {
     return {
         type: 'object',
@@ -352,126 +355,73 @@ function createView (viewName = 'View', properties = {}, required = []) {
     };
 }
 
-module.exports = () => {
-    return {
-        type: 'object',
-        properties: {
-            id: {
-                type: 'string',
-                minLength: 1,
-                description: 'ID of incito'
-            },
-            version: {
-                type: 'string',
-                enum: [
-                    '1.0.0'
-                ],
-                description: 'Incito version'
-            },
-            locale: {
-                type: 'string',
-                minLength: 1,
-                description: 'Locale'
-            },
-            meta: {
-                type: 'object',
-                minProperties: 1,
-                description: 'Container for meta data'
-            },
-            root_view: {
-                '$ref': '#/definitions/views'
-            },
-            font_assets: {
-                type: 'object',
-                minProperties: 1,
-                additionalProperties: false,
-                patternProperties: {
-                    '[a-z|-]+': {
-                        type: 'object',
-                        description: 'External font asset',
-                        properties: {
-                            src: {
-                                type: 'array',
-                                items: {
-                                type: 'array',
-                                items: {
-                                    type: 'string',
-                                    minLength: 1
-                                },
-                                minItems: 2,
-                                maxItems: 2
-                                },
-                                required: true
-                            },
-                            weight: {
-                                type: 'string',
-                                minLength: 1
-                            },
-                            style: {
-                                type: 'string',
-                                minLength: 1
-                            }
-                        }
-                    }
-                }
-            },
-            theme: {
-                type: 'object',
-                properties: {
-                    font_family: {
-                        type: 'array',
-                        items: {
+const schema = {
+    type: 'object',
+    description: 'Incito',
+    properties: {
+        id: {
+            type: 'string',
+            minLength: 1,
+            description: 'ID of incito'
+        },
+        version: {
+            type: 'string',
+            enum: [
+                '1.0.0'
+            ],
+            description: 'Incito version'
+        },
+        locale: {
+            type: 'string',
+            minLength: 1,
+            description: 'Locale'
+        },
+        meta: {
+            type: 'object',
+            minProperties: 1,
+            description: 'Container for meta data'
+        },
+        root_view: {
+            description: 'The main view entry point for the Incito.',
+            '$ref': '#/definitions/views'
+        },
+        font_assets: {
+            type: 'object',
+            minProperties: 1,
+            additionalProperties: false,
+            patternProperties: {
+                '[a-z|-]+': {
+                    type: 'object',
+                    description: 'External font asset',
+                    properties: {
+                        // src: {
+                        //     type: 'array',
+                        //     items: {
+                        //         type: 'array',
+                        //         items: {
+                        //             type: 'string',
+                        //             minLength: 1
+                        //         },
+                        //         minItems: 2,
+                        //         maxItems: 2
+                        //     },
+                        //     required: true
+                        // },
+                        weight: {
                             type: 'string',
                             minLength: 1
                         },
-                        minItems: 1
-                    },
-                    background_color: {
-                        type: 'string',
-                        minLength: 1
-                    },
-                    text_color: {
-                        type: 'string',
-                        minLength: 1
-                    },
-                    line_spacing_multiplier: {
-                        type: 'number'
+                        style: {
+                            type: 'string',
+                            minLength: 1
+                        }
                     }
                 }
             }
         },
-        required: [
-            'id',
-            'version',
-            'root_view'
-        ],
-        definitions: {
-            views: {
-                oneOf: [{
-                    '$ref': '#/definitions/view'
-                }, {
-                    '$ref': '#/definitions/textView'
-                }, {
-                    '$ref': '#/definitions/absoluteLayout'
-                }, {
-                    '$ref': '#/definitions/linearLayout'
-                }, {
-                    '$ref': '#/definitions/flexLayout'
-                }, {
-                    '$ref': '#/definitions/fragView'
-                }, {
-                    '$ref': '#/definitions/imageView'
-                }, {
-                    '$ref': '#/definitions/videoEmbedView'
-                }, {
-                    '$ref': '#/definitions/videoView'
-                }]
-            },
-            view: createView('View', {}, []),
-            textView: createView('TextView', {
-                text_all_caps: {
-                    type: 'boolean'
-                },
+        theme: {
+            type: 'object',
+            properties: {
                 font_family: {
                     type: 'array',
                     items: {
@@ -480,7 +430,7 @@ module.exports = () => {
                     },
                     minItems: 1
                 },
-                text: {
+                background_color: {
                     type: 'string',
                     minLength: 1
                 },
@@ -488,98 +438,153 @@ module.exports = () => {
                     type: 'string',
                     minLength: 1
                 },
-                text_alignment: {
-                    type: 'string',
-                    minLength: 1
-                },
-                text_size: {
-                    type: 'number',
-                    minimum: 0
-                },
-                font_stretch: {
-                    type: 'string',
-                    minLength: 1
-                },
-                text_style: {
-                    type: 'string'
-                },
-                spans: {
-                    type: 'array',
-                    items: {
-                        type: 'object',
-                        properties: {
-                            start: {
-                                type: 'integer'
-                            },
-                            end: {
-                                type: 'integer'
-                            }
-                        }
-                    },
-                    minItems: 1
-                },
-                max_lines: {
-                    type: 'integer',
-                    minimum: 1
-                }
-            }, ['text']),
-            absoluteLayout: createView('AbsoluteLayout', {}, []),
-            linearLayout: createView('LinearLayout', {}, []),
-            flexLayout: createView('FlexLayout', {
-                layout_flex_align_items: {
-                    type: 'string',
-                    minLength: 1
-                },
-                layout_flex_justify_content: {
-                    type: 'string',
-                    minLength: 1
-                },
-                layout_flex_shrink: {
-                    type: 'number'
-                },
-                layout_flex_grow: {
+                line_spacing_multiplier: {
                     type: 'number'
                 }
-            }, []),
-            fragView: createView('FragView', {}, []),
-            imageView: createView('ImageView', {
-                src: {
-                    type: 'string',
-                    format: 'uri',
-                    minLength: 1
-                },
-                label: {
-                    type: 'string'
-                }
-            }, ['src']),
-            videoEmbedView: createView('VideoEmbedView', {
-                src: {
-                    type: 'string',
-                    format: 'uri',
-                    minLength: 1
-                },
-            }, ['src']),
-            videoView: createView('VideoView', {
-                video_width: {
-                    type: [
-                        'string',
-                        'number'
-                    ],
-                    minLength: 1
-                },
-                video_height: {
-                    type: [
-                        'string',
-                        'number'
-                    ],
-                    minLength: 1
-                },
-                src: {
-                    type: 'string',
-                    format: 'uri',
-                    minLength: 1
-                }
-            }, ['video_width', 'video_height', 'src'])
+            }
         }
-    };
+    },
+    required: [
+        'id',
+        'version',
+        'root_view'
+    ],
+    definitions: {
+        views: {
+            oneOf: [{
+                '$ref': '#/definitions/view'
+            }, {
+                '$ref': '#/definitions/textView'
+            }, {
+                '$ref': '#/definitions/absoluteLayout'
+            }, {
+                '$ref': '#/definitions/linearLayout'
+            }, {
+                '$ref': '#/definitions/flexLayout'
+            }, {
+                '$ref': '#/definitions/fragView'
+            }, {
+                '$ref': '#/definitions/imageView'
+            }, {
+                '$ref': '#/definitions/videoEmbedView'
+            }, {
+                '$ref': '#/definitions/videoView'
+            }]
+        },
+        view: createView('View', {}, []),
+        textView: createView('TextView', {
+            text_all_caps: {
+                type: 'boolean'
+            },
+            font_family: {
+                type: 'array',
+                items: {
+                    type: 'string',
+                    minLength: 1
+                },
+                minItems: 1
+            },
+            text: {
+                type: 'string',
+                minLength: 1
+            },
+            text_color: {
+                type: 'string',
+                minLength: 1
+            },
+            text_alignment: {
+                type: 'string',
+                minLength: 1
+            },
+            text_size: {
+                type: 'number',
+                minimum: 0
+            },
+            font_stretch: {
+                type: 'string',
+                minLength: 1
+            },
+            text_style: {
+                type: 'string'
+            },
+            spans: {
+                type: 'array',
+                items: {
+                    type: 'object',
+                    properties: {
+                        start: {
+                            type: 'integer'
+                        },
+                        end: {
+                            type: 'integer'
+                        }
+                    }
+                },
+                minItems: 1
+            },
+            max_lines: {
+                type: 'integer',
+                minimum: 1
+            }
+        }, ['text']),
+        absoluteLayout: createView('AbsoluteLayout', {}, []),
+        linearLayout: createView('LinearLayout', {}, []),
+        flexLayout: createView('FlexLayout', {
+            layout_flex_align_items: {
+                type: 'string',
+                minLength: 1
+            },
+            layout_flex_justify_content: {
+                type: 'string',
+                minLength: 1
+            },
+            layout_flex_shrink: {
+                type: 'number'
+            },
+            layout_flex_grow: {
+                type: 'number'
+            }
+        }, []),
+        fragView: createView('FragView', {}, []),
+        imageView: createView('ImageView', {
+            src: {
+                type: 'string',
+                format: 'uri',
+                minLength: 1
+            },
+            label: {
+                type: 'string'
+            }
+        }, ['src']),
+        videoEmbedView: createView('VideoEmbedView', {
+            src: {
+                type: 'string',
+                format: 'uri',
+                minLength: 1
+            },
+        }, ['src']),
+        videoView: createView('VideoView', {
+            video_width: {
+                type: [
+                    'string',
+                    'number'
+                ],
+                minLength: 1
+            },
+            video_height: {
+                type: [
+                    'string',
+                    'number'
+                ],
+                minLength: 1
+            },
+            src: {
+                type: 'string',
+                format: 'uri',
+                minLength: 1
+            }
+        }, ['video_width', 'video_height', 'src'])
+    }
 };
+
+fs.writeFileSync(path.join(__dirname, 'incito.schema.json'), JSON.stringify(schema, null, 4));
