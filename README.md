@@ -26,3 +26,9 @@ However, while great in many regards it also has some downsides:
 - Android (under development)
 
 ## Generator
+
+### Feed
+
+### Templates
+
+### Appendix

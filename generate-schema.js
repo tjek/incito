@@ -27,89 +27,35 @@ function createView (viewName = 'View', properties = {}, required) {
                 }
             },
             background_color: {
-                type: 'string',
-                minLength: 1
+                $ref: '#/definitions/color'
+            },
+            background_image: {
+                format: 'uri',
+                type: 'string'
             },
             background_tile_mode: {
-                type: 'string',
                 enum: [
                     'repeat_x',
                     'repeat_y',
                     'repeat'
-                ],
-                minLength: 1
+                ]
             },
             background_image_position: {
                 type: 'string',
                 minLength: 1
             },
             background_image_scale_type: {
-                type: 'string',
                 enum: [
                     'center_crop',
                     'center_inside'
-                ],
-                minLength: 1
+                ]
             },
             gravity: {
-                type: 'string',
-                minLength: 1
-            },
-            layout_width: {
-                type: [
-                    'number',
-                    'string'
-                ],
-                minimum: 0
-            },
-            layout_height: {
-                type: [
-                    'string',
-                    'number'
-                ],
-                minLength: 1
-            },
-            max_height: {
-                type: [
-                    'string',
-                    'number'
-                ],
-                minLength: 1
-            },
-            max_width: {
-                type: [
-                    'string',
-                    'number'
-                ],
-                minLength: 1
-            },
-            min_width: {
-                type: [
-                    'string',
-                    'number'
-                ],
-                minLength: 1
-            },
-            min_height: {
-                type: [
-                    'string',
-                    'number'
-                ],
-                minLength: 1
-            },
-            layout_left: {
-                type: [
-                    'string',
-                    'number'
-                ],
-                minLength: 1
-            },
-            layout_top: {
-                type: [
-                    'string',
-                    'number'
-                ],
-                minLength: 1
+                enum: [
+                    'center_horizontal',
+                    'left_horizontal',
+                    'right_horizontal'
+                ]
             },
             accessibility_label: {
                 type: 'string',
@@ -118,116 +64,105 @@ function createView (viewName = 'View', properties = {}, required) {
             accessibility_hidden: {
                 type: 'boolean'
             },
-            layout_bottom: {
-                type: [
-                    'string',
-                    'number'
-                ],
-                minLength: 1
-            },
             clip_children: {
                 type: 'boolean'
-            },
-            transform_translate_x: {
-                type: [
-                    'string',
-                    'number'
-                ],
-                minLength: 1
-            },
-            transform_translate_y: {
-                type: [
-                    'string',
-                    'number'
-                ],
-                minLength: 1
-            },
-            transform_rotate: {
-                type: 'number'
-            },
-            text_prevent_widow: {
-                type: 'boolean'
-            },
-            line_spacing_multiplier: {
-                type: [
-                    'string',
-                    'number'
-                ]
             },
             title: {
                 type: 'string',
                 minLength: 1
             },
+            link: {
+                type: 'string',
+                format: 'uri'
+            },
+            layout_width: {
+                $ref: '#/definitions/unit'
+            },
+            layout_height: {
+                $ref: '#/definitions/unit'
+            },
+            max_height: {
+                $ref: '#/definitions/unit'
+            },
+            max_width: {
+                $ref: '#/definitions/unit'
+            },
+            min_width: {
+                $ref: '#/definitions/unit'
+            },
+            min_height: {
+                $ref: '#/definitions/unit'
+            },
+            layout_left: {
+                $ref: '#/definitions/unit'
+            },
+            layout_top: {
+                $ref: '#/definitions/unit'
+            },
+            layout_bottom: {
+                $ref: '#/definitions/unit'
+            },
             layout_margin: {
-                type: [
-                    'string',
-                    'number'
-                ],
-                minLength: 1
+                $ref: '#/definitions/unit'
             },
-            layout_flex_align_content: {
-                type: 'string',
-                minLength: 1
+            layout_margin_left: {
+                $ref: '#/definitions/unit'
             },
-            layout_flex_direction: {
-                type: 'string',
-                minLength: 1
+            layout_margin_right: {
+                $ref: '#/definitions/unit'
             },
-            padding: {
-                type: 'number'
-            },
-            padding_top: {
-                type: [
-                    'string',
-                    'number'
-                ],
-                minLength: 1
-            },
-            padding_left: {
-                type: [
-                    'string',
-                    'number'
-                ],
-                minLength: 1
-            },
-            padding_right: {
-                type: [
-                    'string',
-                    'number'
-                ],
-                minLength: 1
-            },
-            padding_bottom: {
-                type: [
-                    'string',
-                    'number'
-                ],
-                minLength: 1
-            },
-            layout_right: {
-                type: [
-                    'string',
-                    'number'
-                ],
-                minLength: 1
+            layout_margin_bottom: {
+                $ref: '#/definitions/unit'
             },
             layout_margin_top: {
-                type: [
-                    'string',
-                    'number'
-                ],
-                minLength: 1
+                $ref: '#/definitions/unit'
+            },
+            padding: {
+                $ref: '#/definitions/unit'
+            },
+            padding_top: {
+                $ref: '#/definitions/unit'
+            },
+            padding_left: {
+                $ref: '#/definitions/unit'
+            },
+            padding_right: {
+                $ref: '#/definitions/unit'
+            },
+            padding_bottom: {
+                $ref: '#/definitions/unit'
+            },
+            layout_right: {
+                $ref: '#/definitions/unit'
+            },
+            transform_scale: {
+                type: 'number'
+            },
+            transform_translate_x: {
+                $ref: '#/definitions/unit'
+            },
+            transform_translate_y: {
+                $ref: '#/definitions/unit'
+            },
+            transform_rotate: {
+                type: 'number',
+                minimum: -360,
+                maximum: 360
+            },
+            transform_origin: {
+                type: 'array',
+                items: {
+                    type: 'string',
+                    minLength: 1
+                },
+                minItems: 2,
+                maxItems: 2
             },
             stroke_color: {
-                type: 'string',
-                minLength: 1
+                $ref: '#/definitions/color'
             },
             stroke_width: {
-                type: [
-                    'string',
-                    'number'
-                ],
-                minLength: 1
+                $ref: '#/definitions/unit'
             },
             stroke_style: {
                 type: 'string',
@@ -238,15 +173,8 @@ function createView (viewName = 'View', properties = {}, required) {
                 ],
                 minLength: 1
             },
-            transform_scale: {
-                type: 'number'
-            },
             stroke_bottom_width: {
-                type: [
-                    'string',
-                    'number'
-                ],
-                minLength: 1
+                $ref: '#/definitions/unit'
             },
             stroke_bottom_style: {
                 type: 'string',
@@ -258,15 +186,10 @@ function createView (viewName = 'View', properties = {}, required) {
                 minLength: 1
             },
             stroke_bottom_color: {
-                type: 'string',
-                minLength: 1
+                $ref: '#/definitions/color'
             },
             stroke_right_width: {
-                type: [
-                    'string',
-                    'number'
-                ],
-                minLength: 1
+                $ref: '#/definitions/unit'
             },
             stroke_right_style: {
                 type: 'string',
@@ -278,75 +201,34 @@ function createView (viewName = 'View', properties = {}, required) {
                 minLength: 1
             },
             stroke_right_color: {
-                type: 'string',
-                minLength: 1
+                $ref: '#/definitions/color'
             },
             corner_radius: {
-                type: [
-                    'string',
-                    'number'
-                ],
-                minLength: 1
+                $ref: '#/definitions/unit'
             },
             corner_top_right_radius: {
-                type: [
-                    'string',
-                    'number'
-                ],
-                minLength: 1
+                $ref: '#/definitions/unit'
             },
             corner_top_left_radius: {
-                type: [
-                    'string',
-                    'number'
-                ],
-                minLength: 1
+                $ref: '#/definitions/unit'
             },
             corner_bottom_right_radius: {
-                type: [
-                    'string',
-                    'number'
-                ],
-                minLength: 1
+                $ref: '#/definitions/unit'
             },
             corner_bottom_left_radius: {
-                type: [
-                    'string',
-                    'number'
-                ],
-                minLength: 1
+                $ref: '#/definitions/unit'
             },
-            layout_margin_left: {
-                type: [
-                    'string',
-                    'number'
-                ],
-                minLength: 1
+            shadow_color: {
+                $ref: '#/definitions/color'
             },
-            background_image: {
-                type: 'string',
-                minLength: 1
+            shadow_dx: {
+                type: 'number'
             },
-            transform_origin: {
-                type: 'array',
-                items: {
-                    type: 'string',
-                    minLength: 1
-                },
-                minItems: 2,
-                maxItems: 2
+            shadow_dy: {
+                type: 'number'
             },
-            layout_margin_bottom: {
-                type: [
-                    'string',
-                    'number'
-                ],
-                minLength: 1
-            },
-            link: {
-                type: 'string',
-                format: 'uri',
-                minLength: 1
+            shadow_radius: {
+                type: 'number'
             }
         })
     };
@@ -360,50 +242,55 @@ const schema = {
         id: {
             type: 'string',
             minLength: 1,
-            description: 'ID of incito'
+            description: 'The identifier of the Incito used to future reference.'
         },
         version: {
             type: 'string',
             enum: [
                 '1.0.0'
             ],
-            description: 'Incito version'
+            description: 'The Incito specification version'
         },
         locale: {
             type: 'string',
             minLength: 1,
-            description: 'Locale'
+            description: 'The locale that defines the contents in `root_view` the best.'
         },
         meta: {
             type: 'object',
             minProperties: 1,
-            description: 'Container for meta data'
+            description: 'An object that can contain any metadata for the Incito.'
         },
         root_view: {
             description: 'The main view entry point for the Incito.',
             $ref: '#/definitions/views'
         },
         font_assets: {
+            description: 'External font assets loaded to be used in the Incito.',
             type: 'object',
             minProperties: 1,
             additionalProperties: false,
             patternProperties: {
-                '[a-z|-]+': {
+                '[a-z|-|_]+': {
                     type: 'object',
-                    description: 'External font asset',
                     properties: {
                         src: {
                             type: 'array',
                             items: {
                                 type: 'array',
-                                items: {
+                                items: [{
+                                    enum: [
+                                        'woff',
+                                        'woff2',
+                                        'truetype',
+                                        'svg',
+                                        'embedded-opentype'
+                                    ]
+                                }, {
                                     type: 'string',
-                                    minLength: 1
-                                },
-                                minItems: 2,
-                                maxItems: 2
-                            },
-                            required: true
+                                    format: 'uri'
+                                }]
+                            }
                         },
                         weight: {
                             type: 'string',
@@ -413,11 +300,13 @@ const schema = {
                             type: 'string',
                             minLength: 1
                         }
-                    }
+                    },
+                    required: ['src']
                 }
             }
         },
         theme: {
+            description: 'The overall theme of the Incito that all views inherit from.',
             type: 'object',
             properties: {
                 font_family: {
@@ -429,12 +318,10 @@ const schema = {
                     minItems: 1
                 },
                 background_color: {
-                    type: 'string',
-                    minLength: 1
+                    $ref: '#/definitions/color'
                 },
                 text_color: {
-                    type: 'string',
-                    minLength: 1
+                    $ref: '#/definitions/color'
                 },
                 line_spacing_multiplier: {
                     type: 'number'
@@ -448,6 +335,18 @@ const schema = {
         'root_view'
     ],
     definitions: {
+        color: {
+            type: 'string',
+            minLength: 1
+        },
+        unit: {
+            oneOf: [{
+                type: 'integer',
+                minimum: 0
+            }, {
+                pattern: "^[-]?[0-9]+(\.)?([0-9]+)(dp|%)$"
+            }]
+        },
         views: {
             oneOf: [{
                 $ref: '#/definitions/view'
@@ -469,7 +368,7 @@ const schema = {
                 $ref: '#/definitions/videoView'
             }]
         },
-        view: createView('View', {}),
+        view: createView('View'),
         textView: createView('TextView', {
             text_all_caps: {
                 type: 'boolean'
@@ -487,8 +386,7 @@ const schema = {
                 minLength: 1
             },
             text_color: {
-                type: 'string',
-                minLength: 1
+                $ref: '#/definitions/color'
             },
             text_alignment: {
                 type: 'string',
@@ -504,6 +402,15 @@ const schema = {
             },
             text_style: {
                 type: 'string'
+            },
+            text_prevent_widow: {
+                type: 'boolean'
+            },
+            line_spacing_multiplier: {
+                type: [
+                    'string',
+                    'number'
+                ]
             },
             spans: {
                 type: 'array',
@@ -524,7 +431,9 @@ const schema = {
                 type: 'integer',
                 minimum: 1
             }
-        }, ['text']),
+        }, [
+            'text'
+        ]),
         absoluteLayout: createView('AbsoluteLayout', {}),
         linearLayout: createView('LinearLayout', {}),
         flexLayout: createView('FlexLayout', {
@@ -533,6 +442,14 @@ const schema = {
                 minLength: 1
             },
             layout_flex_justify_content: {
+                type: 'string',
+                minLength: 1
+            },
+            layout_flex_align_content: {
+                type: 'string',
+                minLength: 1
+            },
+            layout_flex_direction: {
                 type: 'string',
                 minLength: 1
             },
@@ -546,42 +463,47 @@ const schema = {
         fragView: createView('FragView', {}),
         imageView: createView('ImageView', {
             src: {
+                description: 'The URL to the source image',
                 type: 'string',
-                format: 'uri',
-                minLength: 1
+                format: 'uri'
             },
             label: {
+                description: 'The caption describing the image',
                 type: 'string'
             }
-        }, ['src']),
+        }, [
+            'src'
+        ]),
         videoEmbedView: createView('VideoEmbedView', {
+            description: 'The URL to the source video',
             src: {
                 type: 'string',
-                format: 'uri',
-                minLength: 1
+                format: 'uri'
             },
-        }, ['src']),
+        }, [
+            'src'
+        ]),
         videoView: createView('VideoView', {
             video_width: {
-                type: [
-                    'string',
-                    'number'
-                ],
-                minLength: 1
+                description: 'The original video width in pixels',
+                type: 'number',
+                minimum: 0
             },
             video_height: {
-                type: [
-                    'string',
-                    'number'
-                ],
-                minLength: 1
+                description: 'The original video height in pixels',
+                type: 'number',
+                minimum: 0
             },
             src: {
+                description: 'The URL to the source video',
                 type: 'string',
-                format: 'uri',
-                minLength: 1
+                format: 'uri'
             }
-        }, ['video_width', 'video_height', 'src'])
+        }, [
+            'video_width',
+            'video_height',
+            'src'
+        ])
     }
 };
 
