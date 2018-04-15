@@ -5,6 +5,4 @@ jsf.option({
     alwaysFakeOptionals: true
 });
 
-jsf.resolve(schema).then((sample) => {
-    console.log(JSON.stringify(jsf(sample), null, 2));
-});
+module.exports = jsf.resolve(schema);
