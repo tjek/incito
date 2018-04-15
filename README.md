@@ -20,7 +20,11 @@ Multiple companies, including ShopGun, allow businesses to upload their PDF. For
 
 Because of the control over design and layout, businesses can create a truly inspiring experience that can set them apart from the competition. Instead of looking at a boring same size grid on a webshop, the PDF offers an inspiring experience where each page is new and unique.
 
-However, it also has some downsides:
+### Platform Agnostic
+
+You can open a PDF on a Mac, PC, etc. and you'll get the same experience. A PDF is not tied to a specific platform and we didn't want that to happen for Incito either. That means Incito is not a HTML solution. It's defined in JSON, which is supported everywhere. It takes a lot of inspiration from the Android XML layout and Apple News JSON specifications, however.
+
+The PDF also has some downsides:
 
 ### One Size Fits All
 
@@ -66,8 +70,34 @@ Going forward, we'll launch libraries for iOS and Android as well.
 
 ## Generator
 
+By itself, the Incito format isn't of much value. You need to actually generate some content for people to look at. ShopGun has developed a service that can transform your feeds to Incito. Automatically. The service revolves around businesses within retail that can provide a feed of a set of offers. It's not limited to this but that's our primary focus at the moment.
+
 ### Feed
+
+There's a few requirements to the feed and the data itself for you to be eligible for using the service:
+
+- The feed has to be accessible on the internet via a URL. It's fine if it's protected with HTTP Basic Auth or other mechanisms
+- The data in the feed has to be structured properly for a machine to parse. Ideally as JSON but we also accept XML and CSV
+- We need at least the following information for the offers: title, price and images. We do recommend more info such as savings, quantity, logos, and description
+- Most of the images has to be transparent PNG's allowing us to put them on colored backgrounds
 
 ### Templates
 
+While the generator is fully automatic we have to build a set of templates for each business initially that represent the brand properly. The templates make sure we use the right colors, font, logo, shapes, etc.
+
+There'll be more info about how a template is structured soon.
+
 ### Appendix
+
+You can also provide an appendix for each feed that adds extra info to the generator it can use when it creates Incito automatically. For example, an intro, out, fillers, videos, etc.
+
+#### Offer Tags
+
+If you already use the appendix you can see which tags offers support:
+
+- `layout-disable-image-rotation`: Disables image rotation
+- `layout-disable-image-shadow`: Disables the shadow below images
+
+#### Offer Labels
+
+More to come.
