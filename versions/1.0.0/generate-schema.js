@@ -26,25 +26,8 @@ function createView (viewName = 'View', properties = {}, required = []) {
             child_views: {
                 type: 'array',
                 items: {
-                    oneOf: [{
-                        '$ref': '#/definitions/view'
-                    }, {
-                        '$ref': '#/definitions/textView'
-                    }, {
-                        '$ref': '#/definitions/absoluteLayout'
-                    }, {
-                        '$ref': '#/definitions/linearLayout'
-                    }, {
-                        '$ref': '#/definitions/flexLayout'
-                    }, {
-                        '$ref': '#/definitions/fragView'
-                    }, {
-                        '$ref': '#/definitions/imageView'
-                    }, {
-                        '$ref': '#/definitions/videoEmbedView'
-                    }, {
-                        '$ref': '#/definitions/videoView'
-                    }]
+                    $ref: '#/definitions/views',
+                    $linkVal: 'views'
                 }
             },
             background_color: {
@@ -401,25 +384,8 @@ const schema = {
         },
         root_view: {
             description: 'The main view entry point for the Incito.',
-            oneOf: [{
-                '$ref': '#/definitions/view'
-            }, {
-                '$ref': '#/definitions/textView'
-            }, {
-                '$ref': '#/definitions/absoluteLayout'
-            }, {
-                '$ref': '#/definitions/linearLayout'
-            }, {
-                '$ref': '#/definitions/flexLayout'
-            }, {
-                '$ref': '#/definitions/fragView'
-            }, {
-                '$ref': '#/definitions/imageView'
-            }, {
-                '$ref': '#/definitions/videoEmbedView'
-            }, {
-                '$ref': '#/definitions/videoView'
-            }]
+            $ref: '#/definitions/views',
+            $linkVal: 'views'
         },
         font_assets: {
             type: 'object',
@@ -486,6 +452,27 @@ const schema = {
         'root_view'
     ],
     definitions: {
+        views: {
+            oneOf: [{
+                $ref: '#/definitions/view'
+            }, {
+                $ref: '#/definitions/textView'
+            }, {
+                $ref: '#/definitions/absoluteLayout'
+            }, {
+                $ref: '#/defƒinitions/linearLayout'
+            }, {
+                $ref: '#/definitions/flexLayout'
+            }, {
+                $ref: '#/definitions/fragView'
+            }, {
+                $ref: '#/definitions/imageView'
+            }, {
+                $ref: '#/definitions/videoEmbedView'
+            }, {
+                $ref: '#/definitions/videoView'
+            }]
+        },
         view: createView('View', {}, []),
         textView: createView('TextView', {
             text_all_caps: {
