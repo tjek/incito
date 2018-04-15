@@ -1,5 +1,5 @@
 const fakeData = require('./scripts/fake-data');
 
-fakeData.then((incito) => {
+fakeData().then((incito) => {
     console.log(incito);
 });
