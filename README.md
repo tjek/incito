@@ -6,6 +6,8 @@ Incito is a platform agnostic way to define layout using [JSON](https://www.json
 
 Since 2009, [ShopGun](https://shopgun.com) has been working with catalogs from retail businesses. Almost all of these businesses create the catalogs for physical distribution in mailboxes. They also create a PDF version of the catalog that can be viewed digitally. There's numerous companies that specialize in making these PDF's readable online. We believe we're at a point where we've reached the potential of the PDF because it's difficult to ensure a great user experience across devices and screen sizes. For years, we've wanted to create an alternative to the PDF that continues to allow businesses to distribute their catalog online. We call it [Incito](https://en.wiktionary.org/wiki/incito) (`/ˈin.ki.toː/`): from in- (“in, at, on”) +‎ citō (“set in rapid motion; encourage, incite”).
 
+## PDF
+
 ### The Good Parts
 
 Incito tries to take all the good parts and remove all of the bad parts from the PDF. We think the catalog in PDF form is great in a lot of ways:
