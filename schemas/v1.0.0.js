@@ -475,9 +475,9 @@ const schema = {
             'src'
         ]),
         videoEmbedView: createView('VideoEmbedView', {
-            description: 'The URL to the source video',
             src: {
                 type: 'string',
+                description: 'The URL to the source video',
                 format: 'uri'
             },
         }, [
