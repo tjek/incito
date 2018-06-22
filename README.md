@@ -71,39 +71,5 @@ All versions are defined as JSON schemas to ensure proper types and structure.
 ## Libraries
 
 - [JavaScript](https://github.com/shopgun/incito-browser)
-
-Going forward, we'll launch libraries for iOS and Android as well.
-
-## Generator
-
-By itself, the Incito format isn't of much value. You need to actually generate some content for people to look at. ShopGun has developed a service that can transform your feeds to Incito. Automatically. The service revolves around businesses within retail that can provide a feed of a set of offers. It's not limited to this but that's our primary focus at the moment.
-
-### Feed
-
-There's a few requirements to the feed and the data itself for you to be eligible for using the service:
-
-- The feed has to be accessible on the internet via a URL. It's fine if it's protected with HTTP Basic Auth or other mechanisms
-- The data in the feed has to be structured properly for a machine to parse. Ideally as JSON but we also accept XML and CSV
-- We need at least the following information for the offers: title, price and images. We do recommend more info such as savings, quantity, logos, and description
-- Most of the images has to be transparent PNG's allowing us to put them on colored backgrounds
-
-### Templates
-
-While the generator is fully automatic we have to build a set of templates for each business initially that represent the brand properly. The templates make sure we use the right colors, font, logo, shapes, etc.
-
-There'll be more info about how a template is structured soon.
-
-### Appendix
-
-You can also provide an appendix for each feed that adds extra info to the generator it can use when it creates Incito automatically. For example, an intro, out, fillers, videos, etc.
-
-#### Offer Tags
-
-If you already use the appendix you can see which tags offers support:
-
-- `layout-disable-image-rotation`: Disables image rotation
-- `layout-disable-image-shadow`: Disables the shadow below images
-
-#### Offer Labels
-
-More to come.
+- Android (in progress)
+- iOS (in progress)
