@@ -504,25 +504,26 @@ const schema = {
             'src'
         ]),
         videoView: createView('VideoView', {
-            video_width: {
-                description: 'The original video width in pixels',
-                type: 'number',
-                minimum: 0
-            },
-            video_height: {
-                description: 'The original video height in pixels',
-                type: 'number',
-                minimum: 0
-            },
             src: {
                 description: 'The URL to the source video',
                 type: 'string',
                 format: 'uri'
+            },
+            autoplay: {
+                type: 'boolean'
+            },
+            loop: {
+                type: 'boolean'
+            },
+            controls: {
+                type: 'boolean'
+            },
+            mime: {
+                type: 'string'
             }
         }, [
-            'video_width',
-            'video_height',
-            'src'
+            'src',
+            'mime'
         ])
     }
 };
