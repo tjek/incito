@@ -49,6 +49,7 @@
                                             "woff2",
                                             "truetype",
                                             "svg",
+                                            "opentype",
                                             "embedded-opentype"
                                         ]
                                     },
@@ -109,9 +110,9 @@
             "minLength": 1
         },
         "unit": {
-            "oneOf": [
+            "anyOf": [
                 {
-                    "type": "integer",
+                    "type": "number",
                     "minimum": 0
                 },
                 {
@@ -121,6 +122,9 @@
         },
         "views": {
             "oneOf": [
+                {
+                    "$ref": "#/definitions/fallbackView"
+                },
                 {
                     "$ref": "#/definitions/view"
                 },
@@ -150,14 +154,10 @@
                 }
             ]
         },
-        "view": {
+        "fallbackView": {
             "type": "object",
+            "required": [],
             "properties": {
-                "view_name": {
-                    "enum": [
-                        "View"
-                    ]
-                },
                 "id": {
                     "type": "string",
                     "minLength": 1
@@ -168,6 +168,8 @@
                 },
                 "meta": {
                     "type": "object",
+                    "properties": {},
+                    "additionalProperties": true,
                     "minProperties": 1,
                     "description": "Container for meta data"
                 },
@@ -380,19 +382,483 @@
                 },
                 "shadow_radius": {
                     "type": "number"
+                },
+                "view_name": {
+                    "enum": [
+                        null
+                    ]
+                }
+            }
+        },
+        "view": {
+            "type": "object",
+            "required": [
+                "view_name"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "role": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "meta": {
+                    "type": "object",
+                    "properties": {},
+                    "additionalProperties": true,
+                    "minProperties": 1,
+                    "description": "Container for meta data"
+                },
+                "child_views": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/views"
+                    }
+                },
+                "background_color": {
+                    "$ref": "#/definitions/color"
+                },
+                "background_image": {
+                    "format": "uri",
+                    "type": "string"
+                },
+                "background_tile_mode": {
+                    "enum": [
+                        "repeat_x",
+                        "repeat_y",
+                        "repeat"
+                    ]
+                },
+                "background_image_position": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "background_image_scale_type": {
+                    "enum": [
+                        "center_crop",
+                        "center_inside"
+                    ]
+                },
+                "gravity": {
+                    "enum": [
+                        "center_horizontal",
+                        "left_horizontal",
+                        "right_horizontal"
+                    ]
+                },
+                "accessibility_label": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "accessibility_hidden": {
+                    "type": "boolean"
+                },
+                "clip_children": {
+                    "type": "boolean"
+                },
+                "title": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "link": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "layout_width": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_height": {
+                    "$ref": "#/definitions/unit"
+                },
+                "max_height": {
+                    "$ref": "#/definitions/unit"
+                },
+                "max_width": {
+                    "$ref": "#/definitions/unit"
+                },
+                "min_width": {
+                    "$ref": "#/definitions/unit"
+                },
+                "min_height": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_left": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_top": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_bottom": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_margin": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_margin_left": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_margin_right": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_margin_bottom": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_margin_top": {
+                    "$ref": "#/definitions/unit"
+                },
+                "padding": {
+                    "$ref": "#/definitions/unit"
+                },
+                "padding_top": {
+                    "$ref": "#/definitions/unit"
+                },
+                "padding_left": {
+                    "$ref": "#/definitions/unit"
+                },
+                "padding_right": {
+                    "$ref": "#/definitions/unit"
+                },
+                "padding_bottom": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_right": {
+                    "$ref": "#/definitions/unit"
+                },
+                "transform_scale": {
+                    "type": "number"
+                },
+                "transform_translate_x": {
+                    "$ref": "#/definitions/unit"
+                },
+                "transform_translate_y": {
+                    "$ref": "#/definitions/unit"
+                },
+                "transform_rotate": {
+                    "type": "number",
+                    "minimum": -360,
+                    "maximum": 360
+                },
+                "transform_origin": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                },
+                "stroke_color": {
+                    "$ref": "#/definitions/color"
+                },
+                "stroke_width": {
+                    "$ref": "#/definitions/unit"
+                },
+                "stroke_style": {
+                    "type": "string",
+                    "enum": [
+                        "solid",
+                        "dotted",
+                        "dashed"
+                    ],
+                    "minLength": 1
+                },
+                "stroke_bottom_width": {
+                    "$ref": "#/definitions/unit"
+                },
+                "stroke_bottom_style": {
+                    "type": "string",
+                    "enum": [
+                        "solid",
+                        "dotted",
+                        "dashed"
+                    ],
+                    "minLength": 1
+                },
+                "stroke_bottom_color": {
+                    "$ref": "#/definitions/color"
+                },
+                "stroke_right_width": {
+                    "$ref": "#/definitions/unit"
+                },
+                "stroke_right_style": {
+                    "type": "string",
+                    "enum": [
+                        "solid",
+                        "dotted",
+                        "dashed"
+                    ],
+                    "minLength": 1
+                },
+                "stroke_right_color": {
+                    "$ref": "#/definitions/color"
+                },
+                "corner_radius": {
+                    "$ref": "#/definitions/unit"
+                },
+                "corner_top_right_radius": {
+                    "$ref": "#/definitions/unit"
+                },
+                "corner_top_left_radius": {
+                    "$ref": "#/definitions/unit"
+                },
+                "corner_bottom_right_radius": {
+                    "$ref": "#/definitions/unit"
+                },
+                "corner_bottom_left_radius": {
+                    "$ref": "#/definitions/unit"
+                },
+                "shadow_color": {
+                    "$ref": "#/definitions/color"
+                },
+                "shadow_dx": {
+                    "type": "number"
+                },
+                "shadow_dy": {
+                    "type": "number"
+                },
+                "shadow_radius": {
+                    "type": "number"
+                },
+                "view_name": {
+                    "enum": [
+                        "View"
+                    ]
                 }
             }
         },
         "textView": {
             "type": "object",
             "required": [
-                "text"
+                "text",
+                "view_name"
             ],
             "properties": {
-                "view_name": {
+                "id": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "role": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "meta": {
+                    "type": "object",
+                    "properties": {},
+                    "additionalProperties": true,
+                    "minProperties": 1,
+                    "description": "Container for meta data"
+                },
+                "child_views": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/views"
+                    }
+                },
+                "background_color": {
+                    "$ref": "#/definitions/color"
+                },
+                "background_image": {
+                    "format": "uri",
+                    "type": "string"
+                },
+                "background_tile_mode": {
                     "enum": [
-                        "TextView"
+                        "repeat_x",
+                        "repeat_y",
+                        "repeat"
                     ]
+                },
+                "background_image_position": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "background_image_scale_type": {
+                    "enum": [
+                        "center_crop",
+                        "center_inside"
+                    ]
+                },
+                "gravity": {
+                    "enum": [
+                        "center_horizontal",
+                        "left_horizontal",
+                        "right_horizontal"
+                    ]
+                },
+                "accessibility_label": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "accessibility_hidden": {
+                    "type": "boolean"
+                },
+                "clip_children": {
+                    "type": "boolean"
+                },
+                "title": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "link": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "layout_width": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_height": {
+                    "$ref": "#/definitions/unit"
+                },
+                "max_height": {
+                    "$ref": "#/definitions/unit"
+                },
+                "max_width": {
+                    "$ref": "#/definitions/unit"
+                },
+                "min_width": {
+                    "$ref": "#/definitions/unit"
+                },
+                "min_height": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_left": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_top": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_bottom": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_margin": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_margin_left": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_margin_right": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_margin_bottom": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_margin_top": {
+                    "$ref": "#/definitions/unit"
+                },
+                "padding": {
+                    "$ref": "#/definitions/unit"
+                },
+                "padding_top": {
+                    "$ref": "#/definitions/unit"
+                },
+                "padding_left": {
+                    "$ref": "#/definitions/unit"
+                },
+                "padding_right": {
+                    "$ref": "#/definitions/unit"
+                },
+                "padding_bottom": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_right": {
+                    "$ref": "#/definitions/unit"
+                },
+                "transform_scale": {
+                    "type": "number"
+                },
+                "transform_translate_x": {
+                    "$ref": "#/definitions/unit"
+                },
+                "transform_translate_y": {
+                    "$ref": "#/definitions/unit"
+                },
+                "transform_rotate": {
+                    "type": "number",
+                    "minimum": -360,
+                    "maximum": 360
+                },
+                "transform_origin": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                },
+                "stroke_color": {
+                    "$ref": "#/definitions/color"
+                },
+                "stroke_width": {
+                    "$ref": "#/definitions/unit"
+                },
+                "stroke_style": {
+                    "type": "string",
+                    "enum": [
+                        "solid",
+                        "dotted",
+                        "dashed"
+                    ],
+                    "minLength": 1
+                },
+                "stroke_bottom_width": {
+                    "$ref": "#/definitions/unit"
+                },
+                "stroke_bottom_style": {
+                    "type": "string",
+                    "enum": [
+                        "solid",
+                        "dotted",
+                        "dashed"
+                    ],
+                    "minLength": 1
+                },
+                "stroke_bottom_color": {
+                    "$ref": "#/definitions/color"
+                },
+                "stroke_right_width": {
+                    "$ref": "#/definitions/unit"
+                },
+                "stroke_right_style": {
+                    "type": "string",
+                    "enum": [
+                        "solid",
+                        "dotted",
+                        "dashed"
+                    ],
+                    "minLength": 1
+                },
+                "stroke_right_color": {
+                    "$ref": "#/definitions/color"
+                },
+                "corner_radius": {
+                    "$ref": "#/definitions/unit"
+                },
+                "corner_top_right_radius": {
+                    "$ref": "#/definitions/unit"
+                },
+                "corner_top_left_radius": {
+                    "$ref": "#/definitions/unit"
+                },
+                "corner_bottom_right_radius": {
+                    "$ref": "#/definitions/unit"
+                },
+                "corner_bottom_left_radius": {
+                    "$ref": "#/definitions/unit"
+                },
+                "shadow_color": {
+                    "$ref": "#/definitions/color"
+                },
+                "shadow_dx": {
+                    "type": "number"
+                },
+                "shadow_dy": {
+                    "type": "number"
+                },
+                "shadow_radius": {
+                    "type": "number"
                 },
                 "text_all_caps": {
                     "type": "boolean"
@@ -446,6 +912,12 @@
                             },
                             "end": {
                                 "type": "integer"
+                            },
+                            "name": {
+                                "type": "string",
+                                "enum": [
+                                    "superscript"
+                                ]
                             }
                         }
                     },
@@ -455,239 +927,19 @@
                     "type": "integer",
                     "minimum": 1
                 },
-                "id": {
-                    "type": "string",
-                    "minLength": 1
-                },
-                "role": {
-                    "type": "string",
-                    "minLength": 1
-                },
-                "meta": {
-                    "type": "object",
-                    "minProperties": 1,
-                    "description": "Container for meta data"
-                },
-                "child_views": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/views"
-                    }
-                },
-                "background_color": {
-                    "$ref": "#/definitions/color"
-                },
-                "background_image": {
-                    "format": "uri",
-                    "type": "string"
-                },
-                "background_tile_mode": {
+                "view_name": {
                     "enum": [
-                        "repeat_x",
-                        "repeat_y",
-                        "repeat"
+                        "TextView"
                     ]
-                },
-                "background_image_position": {
-                    "type": "string",
-                    "minLength": 1
-                },
-                "background_image_scale_type": {
-                    "enum": [
-                        "center_crop",
-                        "center_inside"
-                    ]
-                },
-                "gravity": {
-                    "enum": [
-                        "center_horizontal",
-                        "left_horizontal",
-                        "right_horizontal"
-                    ]
-                },
-                "accessibility_label": {
-                    "type": "string",
-                    "minLength": 1
-                },
-                "accessibility_hidden": {
-                    "type": "boolean"
-                },
-                "clip_children": {
-                    "type": "boolean"
-                },
-                "title": {
-                    "type": "string",
-                    "minLength": 1
-                },
-                "link": {
-                    "type": "string",
-                    "format": "uri"
-                },
-                "layout_width": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_height": {
-                    "$ref": "#/definitions/unit"
-                },
-                "max_height": {
-                    "$ref": "#/definitions/unit"
-                },
-                "max_width": {
-                    "$ref": "#/definitions/unit"
-                },
-                "min_width": {
-                    "$ref": "#/definitions/unit"
-                },
-                "min_height": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_left": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_top": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_bottom": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_margin": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_margin_left": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_margin_right": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_margin_bottom": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_margin_top": {
-                    "$ref": "#/definitions/unit"
-                },
-                "padding": {
-                    "$ref": "#/definitions/unit"
-                },
-                "padding_top": {
-                    "$ref": "#/definitions/unit"
-                },
-                "padding_left": {
-                    "$ref": "#/definitions/unit"
-                },
-                "padding_right": {
-                    "$ref": "#/definitions/unit"
-                },
-                "padding_bottom": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_right": {
-                    "$ref": "#/definitions/unit"
-                },
-                "transform_scale": {
-                    "type": "number"
-                },
-                "transform_translate_x": {
-                    "$ref": "#/definitions/unit"
-                },
-                "transform_translate_y": {
-                    "$ref": "#/definitions/unit"
-                },
-                "transform_rotate": {
-                    "type": "number",
-                    "minimum": -360,
-                    "maximum": 360
-                },
-                "transform_origin": {
-                    "type": "array",
-                    "items": {
-                        "type": "string",
-                        "minLength": 1
-                    },
-                    "minItems": 2,
-                    "maxItems": 2
-                },
-                "stroke_color": {
-                    "$ref": "#/definitions/color"
-                },
-                "stroke_width": {
-                    "$ref": "#/definitions/unit"
-                },
-                "stroke_style": {
-                    "type": "string",
-                    "enum": [
-                        "solid",
-                        "dotted",
-                        "dashed"
-                    ],
-                    "minLength": 1
-                },
-                "stroke_bottom_width": {
-                    "$ref": "#/definitions/unit"
-                },
-                "stroke_bottom_style": {
-                    "type": "string",
-                    "enum": [
-                        "solid",
-                        "dotted",
-                        "dashed"
-                    ],
-                    "minLength": 1
-                },
-                "stroke_bottom_color": {
-                    "$ref": "#/definitions/color"
-                },
-                "stroke_right_width": {
-                    "$ref": "#/definitions/unit"
-                },
-                "stroke_right_style": {
-                    "type": "string",
-                    "enum": [
-                        "solid",
-                        "dotted",
-                        "dashed"
-                    ],
-                    "minLength": 1
-                },
-                "stroke_right_color": {
-                    "$ref": "#/definitions/color"
-                },
-                "corner_radius": {
-                    "$ref": "#/definitions/unit"
-                },
-                "corner_top_right_radius": {
-                    "$ref": "#/definitions/unit"
-                },
-                "corner_top_left_radius": {
-                    "$ref": "#/definitions/unit"
-                },
-                "corner_bottom_right_radius": {
-                    "$ref": "#/definitions/unit"
-                },
-                "corner_bottom_left_radius": {
-                    "$ref": "#/definitions/unit"
-                },
-                "shadow_color": {
-                    "$ref": "#/definitions/color"
-                },
-                "shadow_dx": {
-                    "type": "number"
-                },
-                "shadow_dy": {
-                    "type": "number"
-                },
-                "shadow_radius": {
-                    "type": "number"
                 }
             }
         },
         "absoluteLayout": {
             "type": "object",
+            "required": [
+                "view_name"
+            ],
             "properties": {
-                "view_name": {
-                    "enum": [
-                        "AbsoluteLayout"
-                    ]
-                },
                 "id": {
                     "type": "string",
                     "minLength": 1
@@ -698,6 +950,8 @@
                 },
                 "meta": {
                     "type": "object",
+                    "properties": {},
+                    "additionalProperties": true,
                     "minProperties": 1,
                     "description": "Container for meta data"
                 },
@@ -910,17 +1164,20 @@
                 },
                 "shadow_radius": {
                     "type": "number"
+                },
+                "view_name": {
+                    "enum": [
+                        "AbsoluteLayout"
+                    ]
                 }
             }
         },
         "linearLayout": {
             "type": "object",
+            "required": [
+                "view_name"
+            ],
             "properties": {
-                "view_name": {
-                    "enum": [
-                        "LinearLayout"
-                    ]
-                },
                 "id": {
                     "type": "string",
                     "minLength": 1
@@ -931,6 +1188,8 @@
                 },
                 "meta": {
                     "type": "object",
+                    "properties": {},
+                    "additionalProperties": true,
                     "minProperties": 1,
                     "description": "Container for meta data"
                 },
@@ -1143,16 +1402,244 @@
                 },
                 "shadow_radius": {
                     "type": "number"
+                },
+                "view_name": {
+                    "enum": [
+                        "LinearLayout"
+                    ]
                 }
             }
         },
         "flexLayout": {
             "type": "object",
+            "required": [
+                "view_name"
+            ],
             "properties": {
-                "view_name": {
+                "id": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "role": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "meta": {
+                    "type": "object",
+                    "properties": {},
+                    "additionalProperties": true,
+                    "minProperties": 1,
+                    "description": "Container for meta data"
+                },
+                "child_views": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/views"
+                    }
+                },
+                "background_color": {
+                    "$ref": "#/definitions/color"
+                },
+                "background_image": {
+                    "format": "uri",
+                    "type": "string"
+                },
+                "background_tile_mode": {
                     "enum": [
-                        "FlexLayout"
+                        "repeat_x",
+                        "repeat_y",
+                        "repeat"
                     ]
+                },
+                "background_image_position": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "background_image_scale_type": {
+                    "enum": [
+                        "center_crop",
+                        "center_inside"
+                    ]
+                },
+                "gravity": {
+                    "enum": [
+                        "center_horizontal",
+                        "left_horizontal",
+                        "right_horizontal"
+                    ]
+                },
+                "accessibility_label": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "accessibility_hidden": {
+                    "type": "boolean"
+                },
+                "clip_children": {
+                    "type": "boolean"
+                },
+                "title": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "link": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "layout_width": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_height": {
+                    "$ref": "#/definitions/unit"
+                },
+                "max_height": {
+                    "$ref": "#/definitions/unit"
+                },
+                "max_width": {
+                    "$ref": "#/definitions/unit"
+                },
+                "min_width": {
+                    "$ref": "#/definitions/unit"
+                },
+                "min_height": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_left": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_top": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_bottom": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_margin": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_margin_left": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_margin_right": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_margin_bottom": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_margin_top": {
+                    "$ref": "#/definitions/unit"
+                },
+                "padding": {
+                    "$ref": "#/definitions/unit"
+                },
+                "padding_top": {
+                    "$ref": "#/definitions/unit"
+                },
+                "padding_left": {
+                    "$ref": "#/definitions/unit"
+                },
+                "padding_right": {
+                    "$ref": "#/definitions/unit"
+                },
+                "padding_bottom": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_right": {
+                    "$ref": "#/definitions/unit"
+                },
+                "transform_scale": {
+                    "type": "number"
+                },
+                "transform_translate_x": {
+                    "$ref": "#/definitions/unit"
+                },
+                "transform_translate_y": {
+                    "$ref": "#/definitions/unit"
+                },
+                "transform_rotate": {
+                    "type": "number",
+                    "minimum": -360,
+                    "maximum": 360
+                },
+                "transform_origin": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                },
+                "stroke_color": {
+                    "$ref": "#/definitions/color"
+                },
+                "stroke_width": {
+                    "$ref": "#/definitions/unit"
+                },
+                "stroke_style": {
+                    "type": "string",
+                    "enum": [
+                        "solid",
+                        "dotted",
+                        "dashed"
+                    ],
+                    "minLength": 1
+                },
+                "stroke_bottom_width": {
+                    "$ref": "#/definitions/unit"
+                },
+                "stroke_bottom_style": {
+                    "type": "string",
+                    "enum": [
+                        "solid",
+                        "dotted",
+                        "dashed"
+                    ],
+                    "minLength": 1
+                },
+                "stroke_bottom_color": {
+                    "$ref": "#/definitions/color"
+                },
+                "stroke_right_width": {
+                    "$ref": "#/definitions/unit"
+                },
+                "stroke_right_style": {
+                    "type": "string",
+                    "enum": [
+                        "solid",
+                        "dotted",
+                        "dashed"
+                    ],
+                    "minLength": 1
+                },
+                "stroke_right_color": {
+                    "$ref": "#/definitions/color"
+                },
+                "corner_radius": {
+                    "$ref": "#/definitions/unit"
+                },
+                "corner_top_right_radius": {
+                    "$ref": "#/definitions/unit"
+                },
+                "corner_top_left_radius": {
+                    "$ref": "#/definitions/unit"
+                },
+                "corner_bottom_right_radius": {
+                    "$ref": "#/definitions/unit"
+                },
+                "corner_bottom_left_radius": {
+                    "$ref": "#/definitions/unit"
+                },
+                "shadow_color": {
+                    "$ref": "#/definitions/color"
+                },
+                "shadow_dx": {
+                    "type": "number"
+                },
+                "shadow_dy": {
+                    "type": "number"
+                },
+                "shadow_radius": {
+                    "type": "number"
                 },
                 "layout_flex_align_items": {
                     "type": "string",
@@ -1176,239 +1663,19 @@
                 "layout_flex_grow": {
                     "type": "number"
                 },
-                "id": {
-                    "type": "string",
-                    "minLength": 1
-                },
-                "role": {
-                    "type": "string",
-                    "minLength": 1
-                },
-                "meta": {
-                    "type": "object",
-                    "minProperties": 1,
-                    "description": "Container for meta data"
-                },
-                "child_views": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/views"
-                    }
-                },
-                "background_color": {
-                    "$ref": "#/definitions/color"
-                },
-                "background_image": {
-                    "format": "uri",
-                    "type": "string"
-                },
-                "background_tile_mode": {
+                "view_name": {
                     "enum": [
-                        "repeat_x",
-                        "repeat_y",
-                        "repeat"
+                        "FlexLayout"
                     ]
-                },
-                "background_image_position": {
-                    "type": "string",
-                    "minLength": 1
-                },
-                "background_image_scale_type": {
-                    "enum": [
-                        "center_crop",
-                        "center_inside"
-                    ]
-                },
-                "gravity": {
-                    "enum": [
-                        "center_horizontal",
-                        "left_horizontal",
-                        "right_horizontal"
-                    ]
-                },
-                "accessibility_label": {
-                    "type": "string",
-                    "minLength": 1
-                },
-                "accessibility_hidden": {
-                    "type": "boolean"
-                },
-                "clip_children": {
-                    "type": "boolean"
-                },
-                "title": {
-                    "type": "string",
-                    "minLength": 1
-                },
-                "link": {
-                    "type": "string",
-                    "format": "uri"
-                },
-                "layout_width": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_height": {
-                    "$ref": "#/definitions/unit"
-                },
-                "max_height": {
-                    "$ref": "#/definitions/unit"
-                },
-                "max_width": {
-                    "$ref": "#/definitions/unit"
-                },
-                "min_width": {
-                    "$ref": "#/definitions/unit"
-                },
-                "min_height": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_left": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_top": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_bottom": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_margin": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_margin_left": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_margin_right": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_margin_bottom": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_margin_top": {
-                    "$ref": "#/definitions/unit"
-                },
-                "padding": {
-                    "$ref": "#/definitions/unit"
-                },
-                "padding_top": {
-                    "$ref": "#/definitions/unit"
-                },
-                "padding_left": {
-                    "$ref": "#/definitions/unit"
-                },
-                "padding_right": {
-                    "$ref": "#/definitions/unit"
-                },
-                "padding_bottom": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_right": {
-                    "$ref": "#/definitions/unit"
-                },
-                "transform_scale": {
-                    "type": "number"
-                },
-                "transform_translate_x": {
-                    "$ref": "#/definitions/unit"
-                },
-                "transform_translate_y": {
-                    "$ref": "#/definitions/unit"
-                },
-                "transform_rotate": {
-                    "type": "number",
-                    "minimum": -360,
-                    "maximum": 360
-                },
-                "transform_origin": {
-                    "type": "array",
-                    "items": {
-                        "type": "string",
-                        "minLength": 1
-                    },
-                    "minItems": 2,
-                    "maxItems": 2
-                },
-                "stroke_color": {
-                    "$ref": "#/definitions/color"
-                },
-                "stroke_width": {
-                    "$ref": "#/definitions/unit"
-                },
-                "stroke_style": {
-                    "type": "string",
-                    "enum": [
-                        "solid",
-                        "dotted",
-                        "dashed"
-                    ],
-                    "minLength": 1
-                },
-                "stroke_bottom_width": {
-                    "$ref": "#/definitions/unit"
-                },
-                "stroke_bottom_style": {
-                    "type": "string",
-                    "enum": [
-                        "solid",
-                        "dotted",
-                        "dashed"
-                    ],
-                    "minLength": 1
-                },
-                "stroke_bottom_color": {
-                    "$ref": "#/definitions/color"
-                },
-                "stroke_right_width": {
-                    "$ref": "#/definitions/unit"
-                },
-                "stroke_right_style": {
-                    "type": "string",
-                    "enum": [
-                        "solid",
-                        "dotted",
-                        "dashed"
-                    ],
-                    "minLength": 1
-                },
-                "stroke_right_color": {
-                    "$ref": "#/definitions/color"
-                },
-                "corner_radius": {
-                    "$ref": "#/definitions/unit"
-                },
-                "corner_top_right_radius": {
-                    "$ref": "#/definitions/unit"
-                },
-                "corner_top_left_radius": {
-                    "$ref": "#/definitions/unit"
-                },
-                "corner_bottom_right_radius": {
-                    "$ref": "#/definitions/unit"
-                },
-                "corner_bottom_left_radius": {
-                    "$ref": "#/definitions/unit"
-                },
-                "shadow_color": {
-                    "$ref": "#/definitions/color"
-                },
-                "shadow_dx": {
-                    "type": "number"
-                },
-                "shadow_dy": {
-                    "type": "number"
-                },
-                "shadow_radius": {
-                    "type": "number"
                 }
             }
         },
         "fragView": {
             "type": "object",
+            "required": [
+                "view_name"
+            ],
             "properties": {
-                "view_name": {
-                    "enum": [
-                        "FragView"
-                    ]
-                },
                 "id": {
                     "type": "string",
                     "minLength": 1
@@ -1419,6 +1686,8 @@
                 },
                 "meta": {
                     "type": "object",
+                    "properties": {},
+                    "additionalProperties": true,
                     "minProperties": 1,
                     "description": "Container for meta data"
                 },
@@ -1631,19 +1900,245 @@
                 },
                 "shadow_radius": {
                     "type": "number"
+                },
+                "view_name": {
+                    "enum": [
+                        "FragView"
+                    ]
                 }
             }
         },
         "imageView": {
             "type": "object",
             "required": [
-                "src"
+                "src",
+                "view_name"
             ],
             "properties": {
-                "view_name": {
+                "id": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "role": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "meta": {
+                    "type": "object",
+                    "properties": {},
+                    "additionalProperties": true,
+                    "minProperties": 1,
+                    "description": "Container for meta data"
+                },
+                "child_views": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/views"
+                    }
+                },
+                "background_color": {
+                    "$ref": "#/definitions/color"
+                },
+                "background_image": {
+                    "format": "uri",
+                    "type": "string"
+                },
+                "background_tile_mode": {
                     "enum": [
-                        "ImageView"
+                        "repeat_x",
+                        "repeat_y",
+                        "repeat"
                     ]
+                },
+                "background_image_position": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "background_image_scale_type": {
+                    "enum": [
+                        "center_crop",
+                        "center_inside"
+                    ]
+                },
+                "gravity": {
+                    "enum": [
+                        "center_horizontal",
+                        "left_horizontal",
+                        "right_horizontal"
+                    ]
+                },
+                "accessibility_label": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "accessibility_hidden": {
+                    "type": "boolean"
+                },
+                "clip_children": {
+                    "type": "boolean"
+                },
+                "title": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "link": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "layout_width": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_height": {
+                    "$ref": "#/definitions/unit"
+                },
+                "max_height": {
+                    "$ref": "#/definitions/unit"
+                },
+                "max_width": {
+                    "$ref": "#/definitions/unit"
+                },
+                "min_width": {
+                    "$ref": "#/definitions/unit"
+                },
+                "min_height": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_left": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_top": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_bottom": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_margin": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_margin_left": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_margin_right": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_margin_bottom": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_margin_top": {
+                    "$ref": "#/definitions/unit"
+                },
+                "padding": {
+                    "$ref": "#/definitions/unit"
+                },
+                "padding_top": {
+                    "$ref": "#/definitions/unit"
+                },
+                "padding_left": {
+                    "$ref": "#/definitions/unit"
+                },
+                "padding_right": {
+                    "$ref": "#/definitions/unit"
+                },
+                "padding_bottom": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_right": {
+                    "$ref": "#/definitions/unit"
+                },
+                "transform_scale": {
+                    "type": "number"
+                },
+                "transform_translate_x": {
+                    "$ref": "#/definitions/unit"
+                },
+                "transform_translate_y": {
+                    "$ref": "#/definitions/unit"
+                },
+                "transform_rotate": {
+                    "type": "number",
+                    "minimum": -360,
+                    "maximum": 360
+                },
+                "transform_origin": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                },
+                "stroke_color": {
+                    "$ref": "#/definitions/color"
+                },
+                "stroke_width": {
+                    "$ref": "#/definitions/unit"
+                },
+                "stroke_style": {
+                    "type": "string",
+                    "enum": [
+                        "solid",
+                        "dotted",
+                        "dashed"
+                    ],
+                    "minLength": 1
+                },
+                "stroke_bottom_width": {
+                    "$ref": "#/definitions/unit"
+                },
+                "stroke_bottom_style": {
+                    "type": "string",
+                    "enum": [
+                        "solid",
+                        "dotted",
+                        "dashed"
+                    ],
+                    "minLength": 1
+                },
+                "stroke_bottom_color": {
+                    "$ref": "#/definitions/color"
+                },
+                "stroke_right_width": {
+                    "$ref": "#/definitions/unit"
+                },
+                "stroke_right_style": {
+                    "type": "string",
+                    "enum": [
+                        "solid",
+                        "dotted",
+                        "dashed"
+                    ],
+                    "minLength": 1
+                },
+                "stroke_right_color": {
+                    "$ref": "#/definitions/color"
+                },
+                "corner_radius": {
+                    "$ref": "#/definitions/unit"
+                },
+                "corner_top_right_radius": {
+                    "$ref": "#/definitions/unit"
+                },
+                "corner_top_left_radius": {
+                    "$ref": "#/definitions/unit"
+                },
+                "corner_bottom_right_radius": {
+                    "$ref": "#/definitions/unit"
+                },
+                "corner_bottom_left_radius": {
+                    "$ref": "#/definitions/unit"
+                },
+                "shadow_color": {
+                    "$ref": "#/definitions/color"
+                },
+                "shadow_dx": {
+                    "type": "number"
+                },
+                "shadow_dy": {
+                    "type": "number"
+                },
+                "shadow_radius": {
+                    "type": "number"
                 },
                 "src": {
                     "description": "The URL to the source image",
@@ -1654,247 +2149,20 @@
                     "description": "The caption describing the image",
                     "type": "string"
                 },
-                "id": {
-                    "type": "string",
-                    "minLength": 1
-                },
-                "role": {
-                    "type": "string",
-                    "minLength": 1
-                },
-                "meta": {
-                    "type": "object",
-                    "minProperties": 1,
-                    "description": "Container for meta data"
-                },
-                "child_views": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/views"
-                    }
-                },
-                "background_color": {
-                    "$ref": "#/definitions/color"
-                },
-                "background_image": {
-                    "format": "uri",
-                    "type": "string"
-                },
-                "background_tile_mode": {
+                "view_name": {
                     "enum": [
-                        "repeat_x",
-                        "repeat_y",
-                        "repeat"
+                        "ImageView"
                     ]
-                },
-                "background_image_position": {
-                    "type": "string",
-                    "minLength": 1
-                },
-                "background_image_scale_type": {
-                    "enum": [
-                        "center_crop",
-                        "center_inside"
-                    ]
-                },
-                "gravity": {
-                    "enum": [
-                        "center_horizontal",
-                        "left_horizontal",
-                        "right_horizontal"
-                    ]
-                },
-                "accessibility_label": {
-                    "type": "string",
-                    "minLength": 1
-                },
-                "accessibility_hidden": {
-                    "type": "boolean"
-                },
-                "clip_children": {
-                    "type": "boolean"
-                },
-                "title": {
-                    "type": "string",
-                    "minLength": 1
-                },
-                "link": {
-                    "type": "string",
-                    "format": "uri"
-                },
-                "layout_width": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_height": {
-                    "$ref": "#/definitions/unit"
-                },
-                "max_height": {
-                    "$ref": "#/definitions/unit"
-                },
-                "max_width": {
-                    "$ref": "#/definitions/unit"
-                },
-                "min_width": {
-                    "$ref": "#/definitions/unit"
-                },
-                "min_height": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_left": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_top": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_bottom": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_margin": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_margin_left": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_margin_right": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_margin_bottom": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_margin_top": {
-                    "$ref": "#/definitions/unit"
-                },
-                "padding": {
-                    "$ref": "#/definitions/unit"
-                },
-                "padding_top": {
-                    "$ref": "#/definitions/unit"
-                },
-                "padding_left": {
-                    "$ref": "#/definitions/unit"
-                },
-                "padding_right": {
-                    "$ref": "#/definitions/unit"
-                },
-                "padding_bottom": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_right": {
-                    "$ref": "#/definitions/unit"
-                },
-                "transform_scale": {
-                    "type": "number"
-                },
-                "transform_translate_x": {
-                    "$ref": "#/definitions/unit"
-                },
-                "transform_translate_y": {
-                    "$ref": "#/definitions/unit"
-                },
-                "transform_rotate": {
-                    "type": "number",
-                    "minimum": -360,
-                    "maximum": 360
-                },
-                "transform_origin": {
-                    "type": "array",
-                    "items": {
-                        "type": "string",
-                        "minLength": 1
-                    },
-                    "minItems": 2,
-                    "maxItems": 2
-                },
-                "stroke_color": {
-                    "$ref": "#/definitions/color"
-                },
-                "stroke_width": {
-                    "$ref": "#/definitions/unit"
-                },
-                "stroke_style": {
-                    "type": "string",
-                    "enum": [
-                        "solid",
-                        "dotted",
-                        "dashed"
-                    ],
-                    "minLength": 1
-                },
-                "stroke_bottom_width": {
-                    "$ref": "#/definitions/unit"
-                },
-                "stroke_bottom_style": {
-                    "type": "string",
-                    "enum": [
-                        "solid",
-                        "dotted",
-                        "dashed"
-                    ],
-                    "minLength": 1
-                },
-                "stroke_bottom_color": {
-                    "$ref": "#/definitions/color"
-                },
-                "stroke_right_width": {
-                    "$ref": "#/definitions/unit"
-                },
-                "stroke_right_style": {
-                    "type": "string",
-                    "enum": [
-                        "solid",
-                        "dotted",
-                        "dashed"
-                    ],
-                    "minLength": 1
-                },
-                "stroke_right_color": {
-                    "$ref": "#/definitions/color"
-                },
-                "corner_radius": {
-                    "$ref": "#/definitions/unit"
-                },
-                "corner_top_right_radius": {
-                    "$ref": "#/definitions/unit"
-                },
-                "corner_top_left_radius": {
-                    "$ref": "#/definitions/unit"
-                },
-                "corner_bottom_right_radius": {
-                    "$ref": "#/definitions/unit"
-                },
-                "corner_bottom_left_radius": {
-                    "$ref": "#/definitions/unit"
-                },
-                "shadow_color": {
-                    "$ref": "#/definitions/color"
-                },
-                "shadow_dx": {
-                    "type": "number"
-                },
-                "shadow_dy": {
-                    "type": "number"
-                },
-                "shadow_radius": {
-                    "type": "number"
                 }
             }
         },
         "videoEmbedView": {
             "type": "object",
             "required": [
-                "src"
+                "src",
+                "view_name"
             ],
             "properties": {
-                "view_name": {
-                    "enum": [
-                        "VideoEmbedView"
-                    ]
-                },
-                "src": {
-                    "type": "string",
-                    "description": "The URL to the source video",
-                    "format": "uri"
-                },
                 "id": {
                     "type": "string",
                     "minLength": 1
@@ -1905,6 +2173,8 @@
                 },
                 "meta": {
                     "type": "object",
+                    "properties": {},
+                    "additionalProperties": true,
                     "minProperties": 1,
                     "description": "Container for meta data"
                 },
@@ -2117,6 +2387,16 @@
                 },
                 "shadow_radius": {
                     "type": "number"
+                },
+                "src": {
+                    "type": "string",
+                    "description": "The URL to the source video",
+                    "format": "uri"
+                },
+                "view_name": {
+                    "enum": [
+                        "VideoEmbedView"
+                    ]
                 }
             }
         },
@@ -2125,13 +2405,234 @@
             "required": [
                 "video_width",
                 "video_height",
-                "src"
+                "src",
+                "view_name"
             ],
             "properties": {
-                "view_name": {
+                "id": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "role": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "meta": {
+                    "type": "object",
+                    "properties": {},
+                    "additionalProperties": true,
+                    "minProperties": 1,
+                    "description": "Container for meta data"
+                },
+                "child_views": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/views"
+                    }
+                },
+                "background_color": {
+                    "$ref": "#/definitions/color"
+                },
+                "background_image": {
+                    "format": "uri",
+                    "type": "string"
+                },
+                "background_tile_mode": {
                     "enum": [
-                        "VideoView"
+                        "repeat_x",
+                        "repeat_y",
+                        "repeat"
                     ]
+                },
+                "background_image_position": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "background_image_scale_type": {
+                    "enum": [
+                        "center_crop",
+                        "center_inside"
+                    ]
+                },
+                "gravity": {
+                    "enum": [
+                        "center_horizontal",
+                        "left_horizontal",
+                        "right_horizontal"
+                    ]
+                },
+                "accessibility_label": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "accessibility_hidden": {
+                    "type": "boolean"
+                },
+                "clip_children": {
+                    "type": "boolean"
+                },
+                "title": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "link": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "layout_width": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_height": {
+                    "$ref": "#/definitions/unit"
+                },
+                "max_height": {
+                    "$ref": "#/definitions/unit"
+                },
+                "max_width": {
+                    "$ref": "#/definitions/unit"
+                },
+                "min_width": {
+                    "$ref": "#/definitions/unit"
+                },
+                "min_height": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_left": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_top": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_bottom": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_margin": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_margin_left": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_margin_right": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_margin_bottom": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_margin_top": {
+                    "$ref": "#/definitions/unit"
+                },
+                "padding": {
+                    "$ref": "#/definitions/unit"
+                },
+                "padding_top": {
+                    "$ref": "#/definitions/unit"
+                },
+                "padding_left": {
+                    "$ref": "#/definitions/unit"
+                },
+                "padding_right": {
+                    "$ref": "#/definitions/unit"
+                },
+                "padding_bottom": {
+                    "$ref": "#/definitions/unit"
+                },
+                "layout_right": {
+                    "$ref": "#/definitions/unit"
+                },
+                "transform_scale": {
+                    "type": "number"
+                },
+                "transform_translate_x": {
+                    "$ref": "#/definitions/unit"
+                },
+                "transform_translate_y": {
+                    "$ref": "#/definitions/unit"
+                },
+                "transform_rotate": {
+                    "type": "number",
+                    "minimum": -360,
+                    "maximum": 360
+                },
+                "transform_origin": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                },
+                "stroke_color": {
+                    "$ref": "#/definitions/color"
+                },
+                "stroke_width": {
+                    "$ref": "#/definitions/unit"
+                },
+                "stroke_style": {
+                    "type": "string",
+                    "enum": [
+                        "solid",
+                        "dotted",
+                        "dashed"
+                    ],
+                    "minLength": 1
+                },
+                "stroke_bottom_width": {
+                    "$ref": "#/definitions/unit"
+                },
+                "stroke_bottom_style": {
+                    "type": "string",
+                    "enum": [
+                        "solid",
+                        "dotted",
+                        "dashed"
+                    ],
+                    "minLength": 1
+                },
+                "stroke_bottom_color": {
+                    "$ref": "#/definitions/color"
+                },
+                "stroke_right_width": {
+                    "$ref": "#/definitions/unit"
+                },
+                "stroke_right_style": {
+                    "type": "string",
+                    "enum": [
+                        "solid",
+                        "dotted",
+                        "dashed"
+                    ],
+                    "minLength": 1
+                },
+                "stroke_right_color": {
+                    "$ref": "#/definitions/color"
+                },
+                "corner_radius": {
+                    "$ref": "#/definitions/unit"
+                },
+                "corner_top_right_radius": {
+                    "$ref": "#/definitions/unit"
+                },
+                "corner_top_left_radius": {
+                    "$ref": "#/definitions/unit"
+                },
+                "corner_bottom_right_radius": {
+                    "$ref": "#/definitions/unit"
+                },
+                "corner_bottom_left_radius": {
+                    "$ref": "#/definitions/unit"
+                },
+                "shadow_color": {
+                    "$ref": "#/definitions/color"
+                },
+                "shadow_dx": {
+                    "type": "number"
+                },
+                "shadow_dy": {
+                    "type": "number"
+                },
+                "shadow_radius": {
+                    "type": "number"
                 },
                 "video_width": {
                     "description": "The original video width in pixels",
@@ -2148,228 +2649,10 @@
                     "type": "string",
                     "format": "uri"
                 },
-                "id": {
-                    "type": "string",
-                    "minLength": 1
-                },
-                "role": {
-                    "type": "string",
-                    "minLength": 1
-                },
-                "meta": {
-                    "type": "object",
-                    "minProperties": 1,
-                    "description": "Container for meta data"
-                },
-                "child_views": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/views"
-                    }
-                },
-                "background_color": {
-                    "$ref": "#/definitions/color"
-                },
-                "background_image": {
-                    "format": "uri",
-                    "type": "string"
-                },
-                "background_tile_mode": {
+                "view_name": {
                     "enum": [
-                        "repeat_x",
-                        "repeat_y",
-                        "repeat"
+                        "VideoView"
                     ]
-                },
-                "background_image_position": {
-                    "type": "string",
-                    "minLength": 1
-                },
-                "background_image_scale_type": {
-                    "enum": [
-                        "center_crop",
-                        "center_inside"
-                    ]
-                },
-                "gravity": {
-                    "enum": [
-                        "center_horizontal",
-                        "left_horizontal",
-                        "right_horizontal"
-                    ]
-                },
-                "accessibility_label": {
-                    "type": "string",
-                    "minLength": 1
-                },
-                "accessibility_hidden": {
-                    "type": "boolean"
-                },
-                "clip_children": {
-                    "type": "boolean"
-                },
-                "title": {
-                    "type": "string",
-                    "minLength": 1
-                },
-                "link": {
-                    "type": "string",
-                    "format": "uri"
-                },
-                "layout_width": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_height": {
-                    "$ref": "#/definitions/unit"
-                },
-                "max_height": {
-                    "$ref": "#/definitions/unit"
-                },
-                "max_width": {
-                    "$ref": "#/definitions/unit"
-                },
-                "min_width": {
-                    "$ref": "#/definitions/unit"
-                },
-                "min_height": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_left": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_top": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_bottom": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_margin": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_margin_left": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_margin_right": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_margin_bottom": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_margin_top": {
-                    "$ref": "#/definitions/unit"
-                },
-                "padding": {
-                    "$ref": "#/definitions/unit"
-                },
-                "padding_top": {
-                    "$ref": "#/definitions/unit"
-                },
-                "padding_left": {
-                    "$ref": "#/definitions/unit"
-                },
-                "padding_right": {
-                    "$ref": "#/definitions/unit"
-                },
-                "padding_bottom": {
-                    "$ref": "#/definitions/unit"
-                },
-                "layout_right": {
-                    "$ref": "#/definitions/unit"
-                },
-                "transform_scale": {
-                    "type": "number"
-                },
-                "transform_translate_x": {
-                    "$ref": "#/definitions/unit"
-                },
-                "transform_translate_y": {
-                    "$ref": "#/definitions/unit"
-                },
-                "transform_rotate": {
-                    "type": "number",
-                    "minimum": -360,
-                    "maximum": 360
-                },
-                "transform_origin": {
-                    "type": "array",
-                    "items": {
-                        "type": "string",
-                        "minLength": 1
-                    },
-                    "minItems": 2,
-                    "maxItems": 2
-                },
-                "stroke_color": {
-                    "$ref": "#/definitions/color"
-                },
-                "stroke_width": {
-                    "$ref": "#/definitions/unit"
-                },
-                "stroke_style": {
-                    "type": "string",
-                    "enum": [
-                        "solid",
-                        "dotted",
-                        "dashed"
-                    ],
-                    "minLength": 1
-                },
-                "stroke_bottom_width": {
-                    "$ref": "#/definitions/unit"
-                },
-                "stroke_bottom_style": {
-                    "type": "string",
-                    "enum": [
-                        "solid",
-                        "dotted",
-                        "dashed"
-                    ],
-                    "minLength": 1
-                },
-                "stroke_bottom_color": {
-                    "$ref": "#/definitions/color"
-                },
-                "stroke_right_width": {
-                    "$ref": "#/definitions/unit"
-                },
-                "stroke_right_style": {
-                    "type": "string",
-                    "enum": [
-                        "solid",
-                        "dotted",
-                        "dashed"
-                    ],
-                    "minLength": 1
-                },
-                "stroke_right_color": {
-                    "$ref": "#/definitions/color"
-                },
-                "corner_radius": {
-                    "$ref": "#/definitions/unit"
-                },
-                "corner_top_right_radius": {
-                    "$ref": "#/definitions/unit"
-                },
-                "corner_top_left_radius": {
-                    "$ref": "#/definitions/unit"
-                },
-                "corner_bottom_right_radius": {
-                    "$ref": "#/definitions/unit"
-                },
-                "corner_bottom_left_radius": {
-                    "$ref": "#/definitions/unit"
-                },
-                "shadow_color": {
-                    "$ref": "#/definitions/color"
-                },
-                "shadow_dx": {
-                    "type": "number"
-                },
-                "shadow_dy": {
-                    "type": "number"
-                },
-                "shadow_radius": {
-                    "type": "number"
                 }
             }
         }

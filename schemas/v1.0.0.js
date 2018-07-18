@@ -1,236 +1,248 @@
-function createView (viewName = 'View', properties = {}, required) {
+function createView (viewName, properties = {}, required = []) {
+    const props = Object.assign({}, {
+        id: {
+            type: 'string',
+            minLength: 1
+        },
+        role: {
+            type: 'string',
+            minLength: 1
+        },
+        meta: {
+            type: 'object',
+            properties: {},
+            additionalProperties: true,
+            minProperties: 1,
+            description: 'Container for meta data'
+        },
+        child_views: {
+            type: 'array',
+            items: {
+                $ref: '#/definitions/views'
+            }
+        },
+        background_color: {
+            $ref: '#/definitions/color'
+        },
+        background_image: {
+            format: 'uri',
+            type: 'string'
+        },
+        background_tile_mode: {
+            enum: [
+                'repeat_x',
+                'repeat_y',
+                'repeat'
+            ]
+        },
+        background_image_position: {
+            type: 'string',
+            minLength: 1
+        },
+        background_image_scale_type: {
+            enum: [
+                'center_crop',
+                'center_inside'
+            ]
+        },
+        gravity: {
+            enum: [
+                'center_horizontal',
+                'left_horizontal',
+                'right_horizontal'
+            ]
+        },
+        accessibility_label: {
+            type: 'string',
+            minLength: 1
+        },
+        accessibility_hidden: {
+            type: 'boolean'
+        },
+        clip_children: {
+            type: 'boolean'
+        },
+        title: {
+            type: 'string',
+            minLength: 1
+        },
+        link: {
+            type: 'string',
+            format: 'uri'
+        },
+        layout_width: {
+            $ref: '#/definitions/unit'
+        },
+        layout_height: {
+            $ref: '#/definitions/unit'
+        },
+        max_height: {
+            $ref: '#/definitions/unit'
+        },
+        max_width: {
+            $ref: '#/definitions/unit'
+        },
+        min_width: {
+            $ref: '#/definitions/unit'
+        },
+        min_height: {
+            $ref: '#/definitions/unit'
+        },
+        layout_left: {
+            $ref: '#/definitions/unit'
+        },
+        layout_top: {
+            $ref: '#/definitions/unit'
+        },
+        layout_bottom: {
+            $ref: '#/definitions/unit'
+        },
+        layout_margin: {
+            $ref: '#/definitions/unit'
+        },
+        layout_margin_left: {
+            $ref: '#/definitions/unit'
+        },
+        layout_margin_right: {
+            $ref: '#/definitions/unit'
+        },
+        layout_margin_bottom: {
+            $ref: '#/definitions/unit'
+        },
+        layout_margin_top: {
+            $ref: '#/definitions/unit'
+        },
+        padding: {
+            $ref: '#/definitions/unit'
+        },
+        padding_top: {
+            $ref: '#/definitions/unit'
+        },
+        padding_left: {
+            $ref: '#/definitions/unit'
+        },
+        padding_right: {
+            $ref: '#/definitions/unit'
+        },
+        padding_bottom: {
+            $ref: '#/definitions/unit'
+        },
+        layout_right: {
+            $ref: '#/definitions/unit'
+        },
+        transform_scale: {
+            type: 'number'
+        },
+        transform_translate_x: {
+            $ref: '#/definitions/unit'
+        },
+        transform_translate_y: {
+            $ref: '#/definitions/unit'
+        },
+        transform_rotate: {
+            type: 'number',
+            minimum: -360,
+            maximum: 360
+        },
+        transform_origin: {
+            type: 'array',
+            items: {
+                type: 'string',
+                minLength: 1
+            },
+            minItems: 2,
+            maxItems: 2
+        },
+        stroke_color: {
+            $ref: '#/definitions/color'
+        },
+        stroke_width: {
+            $ref: '#/definitions/unit'
+        },
+        stroke_style: {
+            type: 'string',
+            enum: [
+                'solid',
+                'dotted',
+                'dashed'
+            ],
+            minLength: 1
+        },
+        stroke_bottom_width: {
+            $ref: '#/definitions/unit'
+        },
+        stroke_bottom_style: {
+            type: 'string',
+            enum: [
+                'solid',
+                'dotted',
+                'dashed'
+            ],
+            minLength: 1
+        },
+        stroke_bottom_color: {
+            $ref: '#/definitions/color'
+        },
+        stroke_right_width: {
+            $ref: '#/definitions/unit'
+        },
+        stroke_right_style: {
+            type: 'string',
+            enum: [
+                'solid',
+                'dotted',
+                'dashed'
+            ],
+            minLength: 1
+        },
+        stroke_right_color: {
+            $ref: '#/definitions/color'
+        },
+        corner_radius: {
+            $ref: '#/definitions/unit'
+        },
+        corner_top_right_radius: {
+            $ref: '#/definitions/unit'
+        },
+        corner_top_left_radius: {
+            $ref: '#/definitions/unit'
+        },
+        corner_bottom_right_radius: {
+            $ref: '#/definitions/unit'
+        },
+        corner_bottom_left_radius: {
+            $ref: '#/definitions/unit'
+        },
+        shadow_color: {
+            $ref: '#/definitions/color'
+        },
+        shadow_dx: {
+            type: 'number'
+        },
+        shadow_dy: {
+            type: 'number'
+        },
+        shadow_radius: {
+            type: 'number'
+        }
+    }, properties);
+
+    if (viewName) {
+        props.view_name = {
+            enum: [viewName]
+        };
+
+        required.push('view_name');
+    } else {
+        props.view_name = {
+            enum: [undefined]
+        };
+    }
+
     return {
         type: 'object',
         required,
-        properties: Object.assign({}, {
-            view_name: {
-                enum: [viewName]
-            }
-        }, properties, {
-            id: {
-                type: 'string',
-                minLength: 1
-            },
-            role: {
-                type: 'string',
-                minLength: 1
-            },
-            meta: {
-                type: 'object',
-                minProperties: 1,
-                description: 'Container for meta data'
-            },
-            child_views: {
-                type: 'array',
-                items: {
-                    $ref: '#/definitions/views'
-                }
-            },
-            background_color: {
-                $ref: '#/definitions/color'
-            },
-            background_image: {
-                format: 'uri',
-                type: 'string'
-            },
-            background_tile_mode: {
-                enum: [
-                    'repeat_x',
-                    'repeat_y',
-                    'repeat'
-                ]
-            },
-            background_image_position: {
-                type: 'string',
-                minLength: 1
-            },
-            background_image_scale_type: {
-                enum: [
-                    'center_crop',
-                    'center_inside'
-                ]
-            },
-            gravity: {
-                enum: [
-                    'center_horizontal',
-                    'left_horizontal',
-                    'right_horizontal'
-                ]
-            },
-            accessibility_label: {
-                type: 'string',
-                minLength: 1
-            },
-            accessibility_hidden: {
-                type: 'boolean'
-            },
-            clip_children: {
-                type: 'boolean'
-            },
-            title: {
-                type: 'string',
-                minLength: 1
-            },
-            link: {
-                type: 'string',
-                format: 'uri'
-            },
-            layout_width: {
-                $ref: '#/definitions/unit'
-            },
-            layout_height: {
-                $ref: '#/definitions/unit'
-            },
-            max_height: {
-                $ref: '#/definitions/unit'
-            },
-            max_width: {
-                $ref: '#/definitions/unit'
-            },
-            min_width: {
-                $ref: '#/definitions/unit'
-            },
-            min_height: {
-                $ref: '#/definitions/unit'
-            },
-            layout_left: {
-                $ref: '#/definitions/unit'
-            },
-            layout_top: {
-                $ref: '#/definitions/unit'
-            },
-            layout_bottom: {
-                $ref: '#/definitions/unit'
-            },
-            layout_margin: {
-                $ref: '#/definitions/unit'
-            },
-            layout_margin_left: {
-                $ref: '#/definitions/unit'
-            },
-            layout_margin_right: {
-                $ref: '#/definitions/unit'
-            },
-            layout_margin_bottom: {
-                $ref: '#/definitions/unit'
-            },
-            layout_margin_top: {
-                $ref: '#/definitions/unit'
-            },
-            padding: {
-                $ref: '#/definitions/unit'
-            },
-            padding_top: {
-                $ref: '#/definitions/unit'
-            },
-            padding_left: {
-                $ref: '#/definitions/unit'
-            },
-            padding_right: {
-                $ref: '#/definitions/unit'
-            },
-            padding_bottom: {
-                $ref: '#/definitions/unit'
-            },
-            layout_right: {
-                $ref: '#/definitions/unit'
-            },
-            transform_scale: {
-                type: 'number'
-            },
-            transform_translate_x: {
-                $ref: '#/definitions/unit'
-            },
-            transform_translate_y: {
-                $ref: '#/definitions/unit'
-            },
-            transform_rotate: {
-                type: 'number',
-                minimum: -360,
-                maximum: 360
-            },
-            transform_origin: {
-                type: 'array',
-                items: {
-                    type: 'string',
-                    minLength: 1
-                },
-                minItems: 2,
-                maxItems: 2
-            },
-            stroke_color: {
-                $ref: '#/definitions/color'
-            },
-            stroke_width: {
-                $ref: '#/definitions/unit'
-            },
-            stroke_style: {
-                type: 'string',
-                enum: [
-                    'solid',
-                    'dotted',
-                    'dashed'
-                ],
-                minLength: 1
-            },
-            stroke_bottom_width: {
-                $ref: '#/definitions/unit'
-            },
-            stroke_bottom_style: {
-                type: 'string',
-                enum: [
-                    'solid',
-                    'dotted',
-                    'dashed'
-                ],
-                minLength: 1
-            },
-            stroke_bottom_color: {
-                $ref: '#/definitions/color'
-            },
-            stroke_right_width: {
-                $ref: '#/definitions/unit'
-            },
-            stroke_right_style: {
-                type: 'string',
-                enum: [
-                    'solid',
-                    'dotted',
-                    'dashed'
-                ],
-                minLength: 1
-            },
-            stroke_right_color: {
-                $ref: '#/definitions/color'
-            },
-            corner_radius: {
-                $ref: '#/definitions/unit'
-            },
-            corner_top_right_radius: {
-                $ref: '#/definitions/unit'
-            },
-            corner_top_left_radius: {
-                $ref: '#/definitions/unit'
-            },
-            corner_bottom_right_radius: {
-                $ref: '#/definitions/unit'
-            },
-            corner_bottom_left_radius: {
-                $ref: '#/definitions/unit'
-            },
-            shadow_color: {
-                $ref: '#/definitions/color'
-            },
-            shadow_dx: {
-                type: 'number'
-            },
-            shadow_dy: {
-                type: 'number'
-            },
-            shadow_radius: {
-                type: 'number'
-            }
-        })
+        properties: props
     };
 }
 
@@ -284,6 +296,7 @@ const schema = {
                                         'woff2',
                                         'truetype',
                                         'svg',
+                                        'opentype',
                                         'embedded-opentype'
                                     ]
                                 }, {
@@ -340,8 +353,8 @@ const schema = {
             minLength: 1
         },
         unit: {
-            oneOf: [{
-                type: 'integer',
+            anyOf: [{
+                type: 'number',
                 minimum: 0
             }, {
                 pattern: "^[-]?[0-9]+(\.)?([0-9]+)(dp|%)$"
@@ -349,6 +362,8 @@ const schema = {
         },
         views: {
             oneOf: [{
+                $ref: '#/definitions/fallbackView'
+            }, {
                 $ref: '#/definitions/view'
             }, {
                 $ref: '#/definitions/textView'
@@ -368,6 +383,7 @@ const schema = {
                 $ref: '#/definitions/videoView'
             }]
         },
+        fallbackView: createView(),
         view: createView('View'),
         textView: createView('TextView', {
             text_all_caps: {
@@ -422,6 +438,10 @@ const schema = {
                         },
                         end: {
                             type: 'integer'
+                        },
+                        name: {
+                            type: 'string',
+                            enum: ['superscript']
                         }
                     }
                 },

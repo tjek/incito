@@ -1,0 +1,20 @@
+{
+    "locale": "da_DK",
+    "id": "f9c72f3d-695d-4556-8c9f-200917bdcd45",
+    "version": "1.0.0",
+    "theme": {
+        "text_color": "#000000",
+        "line_spacing_multiplier": 1.4,
+        "font_family": [
+            "sans-serif"
+        ],
+        "background_color": "#5c5c5c"
+    },
+    "root_view": {
+        "child_views": [{
+            "child_views": [{
+
+            }]
+        }]
+    }
+}
