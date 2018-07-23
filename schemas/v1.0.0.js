@@ -168,34 +168,28 @@ function createView (viewName, properties = {}, required = []) {
             ],
             minLength: 1
         },
-        stroke_bottom_width: {
+        stroke_top_width: {
             $ref: '#/definitions/unit'
         },
-        stroke_bottom_style: {
-            type: 'string',
-            enum: [
-                'solid',
-                'dotted',
-                'dashed'
-            ],
-            minLength: 1
-        },
-        stroke_bottom_color: {
+        stroke_top_color: {
             $ref: '#/definitions/color'
         },
         stroke_right_width: {
             $ref: '#/definitions/unit'
         },
-        stroke_right_style: {
-            type: 'string',
-            enum: [
-                'solid',
-                'dotted',
-                'dashed'
-            ],
-            minLength: 1
-        },
         stroke_right_color: {
+            $ref: '#/definitions/color'
+        },
+        stroke_bottom_width: {
+            $ref: '#/definitions/unit'
+        },
+        stroke_bottom_color: {
+            $ref: '#/definitions/color'
+        },
+        stroke_left_width: {
+            $ref: '#/definitions/unit'
+        },
+        stroke_left_color: {
             $ref: '#/definitions/color'
         },
         corner_radius: {
