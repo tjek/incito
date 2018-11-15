@@ -364,8 +364,6 @@ const schema = {
             }, {
                 $ref: '#/definitions/absoluteLayout'
             }, {
-                $ref: '#/definitions/linearLayout'
-            }, {
                 $ref: '#/definitions/flexLayout'
             }, {
                 $ref: '#/definitions/fragView'
@@ -449,7 +447,6 @@ const schema = {
             'text'
         ]),
         absoluteLayout: createView('AbsoluteLayout', {}),
-        linearLayout: createView('LinearLayout', {}),
         flexLayout: createView('FlexLayout', {
             layout_flex_align_items: {
                 type: 'string',
