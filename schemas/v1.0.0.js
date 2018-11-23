@@ -366,8 +366,6 @@ const schema = {
             }, {
                 $ref: '#/definitions/flexLayout'
             }, {
-                $ref: '#/definitions/fragView'
-            }, {
                 $ref: '#/definitions/imageView'
             }, {
                 $ref: '#/definitions/videoEmbedView'
@@ -475,7 +473,6 @@ const schema = {
                 type: 'number'
             }
         }),
-        fragView: createView('FragView', {}),
         imageView: createView('ImageView', {
             src: {
                 description: 'The URL to the source image',
