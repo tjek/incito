@@ -434,8 +434,7 @@ const schema = {
                             enum: ['superscript']
                         }
                     }
-                },
-                minItems: 1
+                }
             },
             max_lines: {
                 type: 'integer',

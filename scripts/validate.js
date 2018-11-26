@@ -1,6 +1,6 @@
 const Ajv = require('ajv');
 const schema = require('../schemas/v1.0.0.json');
-const data = require('../examples/simple');
+const data = require('../examples/advanced');
 
 const ajv = new Ajv();
 const validate = ajv.compile(schema);

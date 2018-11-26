@@ -896,8 +896,7 @@
                                 ]
                             }
                         }
-                    },
-                    "minItems": 1
+                    }
                 },
                 "max_lines": {
                     "type": "integer",
