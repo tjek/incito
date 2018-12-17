@@ -371,6 +371,15 @@
                 "shadow_radius": {
                     "type": "number"
                 },
+                "layout_flex_shrink": {
+                    "type": "number"
+                },
+                "layout_flex_grow": {
+                    "type": "number"
+                },
+                "layout_flex_basis": {
+                    "$ref": "#/definitions/unit"
+                },
                 "view_name": {
                     "enum": [
                         null
@@ -602,6 +611,15 @@
                 },
                 "shadow_radius": {
                     "type": "number"
+                },
+                "layout_flex_shrink": {
+                    "type": "number"
+                },
+                "layout_flex_grow": {
+                    "type": "number"
+                },
+                "layout_flex_basis": {
+                    "$ref": "#/definitions/unit"
                 },
                 "view_name": {
                     "enum": [
@@ -835,6 +853,15 @@
                 },
                 "shadow_radius": {
                     "type": "number"
+                },
+                "layout_flex_shrink": {
+                    "type": "number"
+                },
+                "layout_flex_grow": {
+                    "type": "number"
+                },
+                "layout_flex_basis": {
+                    "$ref": "#/definitions/unit"
                 },
                 "text_all_caps": {
                     "type": "boolean"
@@ -1134,6 +1161,15 @@
                 "shadow_radius": {
                     "type": "number"
                 },
+                "layout_flex_shrink": {
+                    "type": "number"
+                },
+                "layout_flex_grow": {
+                    "type": "number"
+                },
+                "layout_flex_basis": {
+                    "$ref": "#/definitions/unit"
+                },
                 "view_name": {
                     "enum": [
                         "AbsoluteLayout"
@@ -1366,6 +1402,15 @@
                 "shadow_radius": {
                     "type": "number"
                 },
+                "layout_flex_shrink": {
+                    "type": "number"
+                },
+                "layout_flex_grow": {
+                    "type": "number"
+                },
+                "layout_flex_basis": {
+                    "$ref": "#/definitions/unit"
+                },
                 "layout_flex_align_items": {
                     "type": "string",
                     "enum": [
@@ -1408,12 +1453,6 @@
                         "column"
                     ],
                     "minLength": 1
-                },
-                "layout_flex_shrink": {
-                    "type": "number"
-                },
-                "layout_flex_grow": {
-                    "type": "number"
                 },
                 "view_name": {
                     "enum": [
@@ -1647,6 +1686,15 @@
                 },
                 "shadow_radius": {
                     "type": "number"
+                },
+                "layout_flex_shrink": {
+                    "type": "number"
+                },
+                "layout_flex_grow": {
+                    "type": "number"
+                },
+                "layout_flex_basis": {
+                    "$ref": "#/definitions/unit"
                 },
                 "src": {
                     "description": "The URL to the source image",
@@ -1890,6 +1938,15 @@
                 "shadow_radius": {
                     "type": "number"
                 },
+                "layout_flex_shrink": {
+                    "type": "number"
+                },
+                "layout_flex_grow": {
+                    "type": "number"
+                },
+                "layout_flex_basis": {
+                    "$ref": "#/definitions/unit"
+                },
                 "src": {
                     "type": "string",
                     "description": "The URL to the source video",
@@ -2128,6 +2185,15 @@
                 },
                 "shadow_radius": {
                     "type": "number"
+                },
+                "layout_flex_shrink": {
+                    "type": "number"
+                },
+                "layout_flex_grow": {
+                    "type": "number"
+                },
+                "layout_flex_basis": {
+                    "$ref": "#/definitions/unit"
                 },
                 "src": {
                     "description": "The URL to the source video",

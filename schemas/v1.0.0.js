@@ -218,6 +218,15 @@ function createView (viewName, properties = {}, required = []) {
         },
         shadow_radius: {
             type: 'number'
+        },
+        layout_flex_shrink: {
+            type: 'number'
+        },
+        layout_flex_grow: {
+            type: 'number'
+        },
+        layout_flex_basis: {
+            $ref: '#/definitions/unit'
         }
     }, properties);
 
@@ -464,12 +473,6 @@ const schema = {
                 type: 'string',
                 enum: ['row', 'column'],
                 minLength: 1
-            },
-            layout_flex_shrink: {
-                type: 'number'
-            },
-            layout_flex_grow: {
-                type: 'number'
             }
         }),
         imageView: createView('ImageView', {
