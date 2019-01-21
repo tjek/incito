@@ -36,8 +36,17 @@ function createView (viewName, properties = {}, required = []) {
             ]
         },
         background_image_position: {
-            type: 'string',
-            minLength: 1
+            enum: [
+                'left_top',
+                'left_center',
+                'left_bottom',
+                'center_top',
+                'center_center',
+                'center_bottom',
+                'right_top',
+                'right_center',
+                'right_bottom'
+            ]
         },
         background_image_scale_type: {
             enum: [
