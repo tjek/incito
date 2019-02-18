@@ -420,10 +420,6 @@ const schema = {
                 type: 'number',
                 minimum: 0
             },
-            font_stretch: {
-                type: 'string',
-                minLength: 1
-            },
             text_style: {
                 type: 'string'
             },
