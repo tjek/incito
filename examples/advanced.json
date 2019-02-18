@@ -235,7 +235,6 @@
                                         "layout_flex_justify_content": "center",
                                         "layout_flex_direction": "column",
                                         "layout_flex_align_items": "center",
-                                        "layout_flex_align_content": "center",
                                         "layout_bottom": 12,
                                         "corner_radius": "100%",
                                         "child_views": [
@@ -352,7 +351,6 @@
                                         "layout_flex_justify_content": "center",
                                         "layout_flex_direction": "column",
                                         "layout_flex_align_items": "center",
-                                        "layout_flex_align_content": "center",
                                         "layout_bottom": 12,
                                         "corner_radius": "100%",
                                         "child_views": [
@@ -566,7 +564,6 @@
                                         "layout_flex_justify_content": "center",
                                         "layout_flex_direction": "column",
                                         "layout_flex_align_items": "center",
-                                        "layout_flex_align_content": "center",
                                         "layout_bottom": 12,
                                         "corner_radius": "100%",
                                         "child_views": [
@@ -716,7 +713,6 @@
                                         "layout_flex_justify_content": "center",
                                         "layout_flex_direction": "column",
                                         "layout_flex_align_items": "center",
-                                        "layout_flex_align_content": "center",
                                         "layout_bottom": 12,
                                         "corner_radius": "100%",
                                         "child_views": [
@@ -894,7 +890,6 @@
                                         "layout_flex_justify_content": "center",
                                         "layout_flex_direction": "column",
                                         "layout_flex_align_items": "center",
-                                        "layout_flex_align_content": "center",
                                         "layout_bottom": 12,
                                         "corner_radius": "100%",
                                         "child_views": [
@@ -1092,7 +1087,6 @@
                                         "layout_flex_justify_content": "center",
                                         "layout_flex_direction": "column",
                                         "layout_flex_align_items": "center",
-                                        "layout_flex_align_content": "center",
                                         "layout_bottom": 12,
                                         "corner_radius": "100%",
                                         "child_views": [
@@ -9150,7 +9144,6 @@
                                                 "layout_flex_justify_content": "center",
                                                 "layout_flex_direction": "column",
                                                 "layout_flex_align_items": "center",
-                                                "layout_flex_align_content": "center",
                                                 "child_views": [
                                                     {
                                                         "view_name": "TextView",
@@ -9177,7 +9170,6 @@
                                                         "layout_flex_justify_content": "center",
                                                         "layout_flex_direction": "column",
                                                         "layout_flex_align_items": "center",
-                                                        "layout_flex_align_content": "center",
                                                         "clip_children": false,
                                                         "child_views": [
                                                             {
@@ -12684,7 +12676,6 @@
                                                 "layout_flex_justify_content": "center",
                                                 "layout_flex_direction": "column",
                                                 "layout_flex_align_items": "center",
-                                                "layout_flex_align_content": "center",
                                                 "child_views": [
                                                     {
                                                         "view_name": "TextView",
@@ -12711,7 +12702,6 @@
                                                         "layout_flex_justify_content": "center",
                                                         "layout_flex_direction": "column",
                                                         "layout_flex_align_items": "center",
-                                                        "layout_flex_align_content": "center",
                                                         "clip_children": false,
                                                         "child_views": [
                                                             {

@@ -473,11 +473,6 @@ const schema = {
                 enum: ['flex-start', 'flex-end', 'center', 'space-between', 'space-around'],
                 minLength: 1
             },
-            layout_flex_align_content: {
-                type: 'string',
-                enum: ['stretch', 'center', 'flex-start', 'flex-end', 'space-between', 'space-around', 'initial'],
-                minLength: 1
-            },
             layout_flex_direction: {
                 type: 'string',
                 enum: ['row', 'column'],
