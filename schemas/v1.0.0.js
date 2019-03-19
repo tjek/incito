@@ -15,6 +15,13 @@ function createView (viewName, properties = {}, required = []) {
             minProperties: 1,
             description: 'Container for meta data'
         },
+        feature_labels: {
+            type: 'array',
+            items: {
+                type: 'string',
+                minLength: 1
+            }
+        },
         child_views: {
             type: 'array',
             items: {

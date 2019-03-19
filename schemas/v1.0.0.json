@@ -167,6 +167,13 @@
                     "minProperties": 1,
                     "description": "Container for meta data"
                 },
+                "feature_labels": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "minLength": 1
+                    }
+                },
                 "child_views": {
                     "type": "array",
                     "items": {
@@ -416,6 +423,13 @@
                     "additionalProperties": true,
                     "minProperties": 1,
                     "description": "Container for meta data"
+                },
+                "feature_labels": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "minLength": 1
+                    }
                 },
                 "child_views": {
                     "type": "array",
@@ -667,6 +681,13 @@
                     "additionalProperties": true,
                     "minProperties": 1,
                     "description": "Container for meta data"
+                },
+                "feature_labels": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "minLength": 1
+                    }
                 },
                 "child_views": {
                     "type": "array",
@@ -980,6 +1001,13 @@
                     "minProperties": 1,
                     "description": "Container for meta data"
                 },
+                "feature_labels": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "minLength": 1
+                    }
+                },
                 "child_views": {
                     "type": "array",
                     "items": {
@@ -1229,6 +1257,13 @@
                     "additionalProperties": true,
                     "minProperties": 1,
                     "description": "Container for meta data"
+                },
+                "feature_labels": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "minLength": 1
+                    }
                 },
                 "child_views": {
                     "type": "array",
@@ -1511,6 +1546,13 @@
                     "minProperties": 1,
                     "description": "Container for meta data"
                 },
+                "feature_labels": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "minLength": 1
+                    }
+                },
                 "child_views": {
                     "type": "array",
                     "items": {
@@ -1771,6 +1813,13 @@
                     "minProperties": 1,
                     "description": "Container for meta data"
                 },
+                "feature_labels": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "minLength": 1
+                    }
+                },
                 "child_views": {
                     "type": "array",
                     "items": {
@@ -2027,6 +2076,13 @@
                     "additionalProperties": true,
                     "minProperties": 1,
                     "description": "Container for meta data"
+                },
+                "feature_labels": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "minLength": 1
+                    }
                 },
                 "child_views": {
                     "type": "array",
