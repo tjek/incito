@@ -19,7 +19,7 @@ function createView (viewName, properties = {}, required = []) {
             type: 'array',
             items: {
                 type: 'string',
-                pattern: "^[a-z_-]{1,}$",
+                pattern: "^[a-z_-]{1,10}$",
                 minLength: 1
             }
         },
