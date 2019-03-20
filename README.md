@@ -71,5 +71,5 @@ All versions are defined as JSON schemas to ensure proper types and structure.
 ## Libraries
 
 - [JavaScript](https://github.com/shopgun/incito-browser)
+- [iOS](https://github.com/shopgun/incito-ios)
 - Android (in progress)
-- iOS (in progress)
