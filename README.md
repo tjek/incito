@@ -2,7 +2,6 @@
 
 Get Incito Publicaiton Format reference information, and create digital product catalogs.
 
----
 
 ## Overview
 
