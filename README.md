@@ -1,75 +1,104 @@
-# Incito
+# Incito Publication Format
 
-Incito is a platform agnostic way to define layout using [JSON](https://www.json.org).
+### Get Incito Publicaiton Format reference information, and create digital product catalogs.
 
-## Reasoning
+---
 
-Since 2009, [ShopGun](https://shopgun.com) has been working with catalogs from retail businesses. Almost all of these businesses create the catalogs for physical distribution in mailboxes. They also create a PDF version of the catalog that can be viewed digitally. There's numerous companies that specialize in making these PDF's readable online. We believe we're at a point where we've reached the potential of the PDF because it's difficult to ensure a great user experience across devices and screen sizes. For years, we've wanted to create an alternative to the PDF that continues to allow businesses to distribute their catalog online. We call it [Incito](https://en.wiktionary.org/wiki/incito) (`/ˈin.ki.toː/`): from in- (“in, at, on”) +‎ citō (“set in rapid motion; encourage, incite”).
+## Overview
 
-## PDF
+Incito Publication Format is the JavaScript Object Notation (JSON) format used to create automated and truly digital product catalog publications.
 
-### The Good Parts
+A publication created with the Incito Publication Format can include text, images, videos, and embedded web content. You can enhance your publication with animations, behaviors, and customized styles that allow the creation of a unique look and feel of each publication, according to the publishers brand guidelines. The finished publication can be published anywhere and is rendered with the help of the shopgun SDK available at:
 
-Incito tries to take all the good parts and remove all of the bad parts from the PDF. We think the catalog in PDF form is great in a lot of ways:
+![alt text][logo]
 
-####  Control
+With Incito, you only have to author your publication once. Incito can then automatically create updated version of you publication based on any change in the feed and it automatically optimizes the content for mobile, tablet, and desktop views.
 
-Businesses control exactly how the design and layout should look. Once the PDF has been built they can distribute anywhere knowing their brand will be represented the way they want.
+[logo]: https://docs-assets.developer.apple.com/published/bd93d01c66/471c0130-9db2-4012-931e-acc5745a3d61.png "Incito Publication iPad"
 
-#### Distribution
+## Incito Publication Format
+| Properties | Description |
+|:--|:--|
+| **id** <br> String | **(Required)** The unique identifier for the incito. This needs to be unique and could e.g. be done by using UUIDv4.|
+| **version** <br> [String] | **(Required)** The specific version of Incito being used. <br><br> The current version is `v1.0.0`. |
+| **locale** <br> String | The locale that describes the content in root_views the best. <br><br> For example `dk_DK` for Denmark. |
+| **meta** <br> Object | The optional object to contain all meta data, specific for the Incito publication. |
+| **root_view** <br> View Component | The main view entry point for the Incito. <br><br> For example: <br><br> ```root_view: {child_views: [], theme: {}``` |
+| **font_assets** <br> Object | Object to contain all external font assets to be loaded for the publication. |
+| **theme** <br> Object | The main theme that contains the primary colors, fonts, line-spacing values and any additional styling. This can be locally overridden in other areas of the Incito.|
+| **‌** |  |
+|  |  |
 
-Multiple companies, including ShopGun, allow businesses to upload their PDF. For example, a business can upload their PDF to ShopGun where we'll generate a reading experience from it for all of our users.
 
-#### Inspiration
+## View Component
+| Properties | Description |
+|:--|:--|
+| **id** <br> String | The unique view id, which can be used for later reference. |
+| **role** <br> String | Specifies the role of the view within the publication. <br><br> For example: `role: “section”` |
+| **meta** <br> Object | Container for additional meta data on each View Component. |
+| **feature_labels** <br> Array | An Array containing feature labels that describe the view content. |
+| **child_views** <br> Array | The main Container for additional child views within the view. |
+| **background_color** <br> Object |  |
+| **background_image** <br> URI|  |
+| **background_tile_mode** <br> Array | Defines the fill mode of the background tile. Possible options are: <br><br> `repeat_x, repeat_y, repeat` |
+| **background_image_position** <br> [String] | Defines the background image position. Possible options are: <br><br> `left_top, left_center, left_bottom, center_top, center_center, center_bottom, right_top, right_center, right_bottom` |
+| **background_image_scale_type** <br> [String] | Possible options are: <br><br> `center_crop, center_inside` |
+| **gravity** <br> [String] | Defines the gravity attribute of the view component. Possible options are: <br><br> `center_horizontal, left_horizontal, right_horizontal` |
+| **accessibility_label** <br> String | Defines the content of the view for voice over assistants. |
+| **accessibility_hidden** <br> Boolean | Defines whether the accessibility label is hidden or not. |
+| **clip_children** <br> Boolean | Defines is the child views are clipped to the root view. |
+| **title** <br> String | The title of the view. |
+| **link** <br> URI | The optional link property defines the URL the view links to. |
+| **layout_width** <br>  | Defines the absolute width of the component. |
+| **layout_height** <br> | Defines the absolute height of the component. |
+| **max_height** |  |
+| **max_width** |  |
+| **min_width** |  |
+| **min_height** |  |
+| **layout_left** |  |
+| **layout_right** |  |
+| **layout_top** |  |
+| **layout_bottom** |  |
+| **layout_margin** |  |
+| **layout_margin_left** |  |
+| **layout_margin_right** |  |
+| **layout_margin_top** |  |
+| **layout_margin_bottom** |  |
+| **padding** |  |
+| **padding_left** |  |
+| **padding_right** |  |
+| **padding_top** |  |
+| **padding_bottom** |  |
+| **transform_scale** <br> Number |  |
+| **transform_translate_x** <br>  |  |
+| **transform_translate_y** |  |
+| **transform_rotate** <br> Number | Defines the rotation... <br><br> From `min: -360` to `max: 360` |
+| **transform_origin** <br> [String] |  |
+| **stroke_color** |  |
+| **stroke_width** |  |
+| **stroke_style** | Possible options are: <br><br> `solid, dotted, dashed` |
+| **stroke_top_width** |  |
+| **stroke_top_color** |  |
+| **stroke_right_width** |  |
+| **stroke_right_color** |  |
+| **stroke_bottom_width** |  |
+| **stroke_bottom_color** |  |
+| **stroke_left_width** |  |
+| **stroke_left_color** |  |
+| **corner_radius** |  |
+| **corner_top_right_radius** |  |
+| **corner_top_left_radius** |  |
+| **corner_bottom_right_radius** |  |
+| **corner_bottom_left_radius** |  |
+| **shadow_color** |  |
+| **shadow_dx** <br> Number |  |
+| **shadow_dy** <br> Number |  |
+| **shadow_radius** <br> Number |  |
+| **layout_flex_shrink** <br> Number |  |
+| **layout_flex_grow** <br> Number |  |
+| **layout_flex_basis** |  |
+| **view_name** <br> [String] | Defines the view name. |
+|  |  |
+|  |  |
 
-Because of the control over design and layout, businesses can create a truly inspiring experience that can set them apart from the competition. Instead of looking at a boring same size grid on a webshop, the PDF offers an inspiring experience where each page is new and unique.
 
-#### Platform Agnostic
-
-You can open a PDF on a Mac, PC, etc. and you'll get the same experience. A PDF is not tied to a specific platform and we didn't want that to happen for Incito either. That means Incito is not a HTML solution. It's defined in JSON, which is supported everywhere. It takes a lot of inspiration from the Android XML layout and Apple News JSON specifications, however.
-
-### The Bad Parts
-
-The PDF also has some downsides:
-
-#### One Size Fits All
-
-The PDF is not responsive in the sense it has a fixed width and height no matter what device you use:
-
-Ratio #1 | Ratio #2 | Ratio #3
---- | --- | ---
-![](https://i.imgur.com/O2YBbRW.jpg) | ![](https://i.imgur.com/aAhnNaN.jpg) | ![](https://i.imgur.com/tLCQcq7.jpg)
-
-With Incito, you can generate optimized versions for each device and screen.
-
-#### Text Legibility
-
-Because the PDF is usually meant for physical distribution it's not a concern how it looks when scaled down. However, when making a digital reading experience you have to fit to the device screen. It means users have to zoom in on regions they are interested in and pan around. And it usually also means a larger image has to be fetched.
-
-With Incito, there's no need to zoom and all text is easy to read.
-
-#### Accessibility
-
-Because the PDF usually gets rendered into images, accessibility goes out of the window. Screen readers don't have a chance in reading each page out loud. And even when using a screen reader with a PDF it's not optimized for accessibility and structured nicely.
-
-With Incito, it's optimized for accessibility and you can even translate the text to another language on the fly.
-
-#### Production
-
-PDF's are not quick to produce and cannot be generated by machine alone. Usually, you have to set a lot of it up manually in e.g. InDesign. We recognize there's a lot of smart tooling available out there making it quick to setup various grids, etc. But the fact humans have to be involved in the process means you cannot automate it 100 %.
-
-#### Optimization
-
-Because humans are involved in creating PDF's you'll never be able to generate personal and optimized catalogs. With Incito, machines create the catalog (with guidelines from humans, of course) meaning you can create a highly optimized version for each individual and device.
-
-## Versions
-
-All versions are defined as JSON schemas to ensure proper types and structure.
-
-- [v1.0.0](/schemas/v1.0.0.json)
-
-## Libraries
-
-- [JavaScript](https://github.com/shopgun/incito-browser)
-- [iOS](https://github.com/shopgun/incito-ios)
-- Android (in progress)
