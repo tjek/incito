@@ -13,8 +13,6 @@ With Incito, you only have to author your publication once. Every publication is
 
 [logo]: https://docs-assets.developer.apple.com/published/bd93d01c66/471c0130-9db2-4012-931e-acc5745a3d61.png "Incito Publication iPad"
 
-[Incito Format](incito.md)
-
 ## Incito Publication Format
 | | |
 |--|--|
