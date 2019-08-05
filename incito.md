@@ -1,4 +1,5 @@
-## Incito Publication Format (v1.0.0)
+Object
+## Incito
 
 The root object of any Incito Publicaiton, containing all required properties, metadata, content, layout, and styles.
 
