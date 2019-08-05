@@ -17,14 +17,7 @@ With Incito, you only have to author your publication once. Every publication is
 [Incito Format](incito.md)
 
 ## Incito Publication Format
-| Properties | Description |
+| | |
 |--|--|
 | **Getting started** | object [Incito](incito.md) <br> The root object of any Incito Publicaiton, containing all required properties, metadata, content, layout, and styles. |
-| **version** <br> [String] | **(Required)** The specific version of Incito being used. <br><br> The current version is `v1.0.0`. |
-| **locale** <br> String | The locale that describes the content in root_views the best. <br><br> For example `dk_DK` for Denmark. |
-| **meta** <br> Object | The optional object to contain all meta data, specific for the Incito publication. |
-| **root_view** <br> View Component | The main view entry point for the Incito. <br><br> For example: <br><br> ```root_view: {child_views: [], theme: {}``` |
-| **font_assets** <br> Object | Object to contain all external font assets to be loaded for the publication. |
-| **theme** <br> Object | The main theme that contains the primary colors, fonts, line-spacing values and any additional styling. This can be locally overridden in other areas of the Incito.|
-| **‌** |  |
 |  |  |
