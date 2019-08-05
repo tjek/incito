@@ -1,18 +1,16 @@
 # Incito Publication Format
 
-### Get Incito Publicaiton Format reference information, and create digital product catalogs.
+Get Incito Publicaiton Format reference information, and create digital product catalogs.
 
 ---
 
 ## Overview
 
-Incito Publication Format is the JavaScript Object Notation (JSON) format used to create automated and truly digital product catalog publications.
+Incito Publication Format is a JavaScript Object Notation (JSON) format used to create automated platform agnostic publication layout for product catalogs, online shops, or any other layout.
 
-A publication created with the Incito Publication Format can include text, images, videos, and embedded web content. You can enhance your publication with animations, behaviors, and customized styles that allow the creation of a unique look and feel of each publication, according to the publishers brand guidelines. The finished publication can be published anywhere and is rendered with the help of the shopgun SDK available at:
+A publication created with the Incito Publication Format (v1.0.0) can include text, images, and videos. You can enhance your publication with animations, behaviors, and customized styles that allow the creation of a unique look and feel for each publication, according to the publishers brand requirements. The finished publication can be published anywhere and is rendered with the help of the [Shopgun-SDK](https://shopgun.com/developers).
 
-![alt text][logo]
-
-With Incito, you only have to author your publication once. Incito can then automatically create updated version of you publication based on any change in the feed and it automatically optimizes the content for mobile, tablet, and desktop views.
+With Incito, you only have to author your publication once. Every publication is then automatically optimized for mobile, tablet, and desktop view.
 
 [logo]: https://docs-assets.developer.apple.com/published/bd93d01c66/471c0130-9db2-4012-931e-acc5745a3d61.png "Incito Publication iPad"
 
