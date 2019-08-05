@@ -19,7 +19,7 @@ With Incito, you only have to author your publication once. Every publication is
 ## Incito Publication Format
 | Properties | Description |
 |:--|:--|
-| **id** <br> String | **(Required)** The unique identifier for the incito. This needs to be unique and could e.g. be done by using UUIDv4.|
+| **Getting started** | object [Incito](incito.md) |
 | **version** <br> [String] | **(Required)** The specific version of Incito being used. <br><br> The current version is `v1.0.0`. |
 | **locale** <br> String | The locale that describes the content in root_views the best. <br><br> For example `dk_DK` for Denmark. |
 | **meta** <br> Object | The optional object to contain all meta data, specific for the Incito publication. |
