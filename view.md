@@ -13,7 +13,7 @@ Properties shared by all view component types.
 | **background_color** <br> Object |  |
 | **background_image** <br> URI|  |
 | **background_tile_mode** <br> Array | Defines the fill mode of the background tile. Possible options are: <br><br> `repeat_x, repeat_y, repeat` |
-| **background_image_position** <br> [String] | Defines the background image position. Possible options are: <br><br> `left_top`, `left_center`, `left_bottom`, `center_top`, `center_center`, `center_bottom`, `right_top`, `right_center`, `right_bottom` |
+| **background_image_position** <br> String | Defines the background image position. Possible options are: <br><br> `left_top`, `left_center`, `left_bottom`, `center_top`, `center_center`, `center_bottom`, `right_top`, `right_center`, `right_bottom` |
 | **background_image_scale_type** <br> [String] | Possible options are: <br><br> `center_crop, center_inside` |
 | **gravity** <br> [String] | Defines the gravity attribute of the view component. Possible options are: <br><br> `center_horizontal, left_horizontal, right_horizontal` |
 | **accessibility_label** <br> String | Defines the content of the view for voice over assistants. |
