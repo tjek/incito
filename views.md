@@ -6,12 +6,17 @@ Views make up the root of every Incito Publication. They are used to build produ
 
 Each view has a role within the publication, which is expresed by the property called role. For example, the valye of the role property might be section.
 
-The following tables give you an overview of the views that can be used to create an article in the Incito Publicaiton Format.
+The following table give you an overview of the views that can be used to create an article in the Incito Publicaiton Format.
 
 
 
-| Properties | Description |
+| View category | View type |
 |:--|:--|
-| **fallbackView** <br> FallbackView | The fallback view that is being used when no furher specification is given. |
-| **textView** <br> TextView | The text view that is specifically used for text. It contains further specifications on text alignment, positioning etc.` |
+| View | [FallbackView](fallbackView.md), [TextView](textView.md), [ImageView](imageView.md), [VideoEmbedView](videoEmbedView.md), [VideoView](videoView.md) |
+| Layout | [AbsoluteLayout](absolyteLayout.md), [FlexLayout](flexLayout.md) |
 |  |  |
+
+
+> **Note** <br>
+> Choosing the view role that best describes your content is necessary to ensure best possible voice-over.
+
