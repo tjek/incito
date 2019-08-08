@@ -25,7 +25,7 @@ Here you can find a list of all possible [Views](views.md).
 | **link** <br> URI | The optional link property defines the URL the view links to. |
 | **layout_width** <br> [Unit](unit.md) | Defines the absolute width of the component. |
 | **layout_height** <br> [Unit](unit.md) | Defines the absolute height of the component. |
-| **max_height** <br> [Unit](unit.md) |  |
+| **max_height** <br> [Unit](unit.md) | The unit that defines the maximal height of the view. <br><br> For example: `px`, `%`. |
 | **max_width** <br> [Unit](unit.md) |  |
 | **min_width** <br> [Unit](unit.md) |  |
 | **min_height** <br> [Unit](unit.md) |  |
