@@ -1,6 +1,6 @@
 ### Object
 
-## Flex Layout
+## Flex Layout (View)
 
 Properties used in the Flex Layout View.
 
