@@ -23,21 +23,21 @@ Here you can find a list of all possible [Views](views.md).
 | **clip_children** <br> Boolean | Defines is the child views are clipped to the root view. |
 | **title** <br> String | The title of the view. |
 | **link** <br> URI | The optional link property defines the URL the view links to. |
-| **layout_width** <br>  | Defines the absolute width of the component. |
-| **layout_height** <br> | Defines the absolute height of the component. |
-| **max_height** |  |
-| **max_width** |  |
-| **min_width** |  |
-| **min_height** |  |
-| **layout_left** |  |
-| **layout_right** |  |
-| **layout_top** |  |
-| **layout_bottom** |  |
-| **layout_margin** |  |
-| **layout_margin_left** |  |
-| **layout_margin_right** |  |
-| **layout_margin_top** |  |
-| **layout_margin_bottom** |  |
+| **layout_width** <br> [Unit](unit.md) | Defines the absolute width of the component. |
+| **layout_height** <br> [Unit](unit.md) | Defines the absolute height of the component. |
+| **max_height** <br> [Unit](unit.md) |  |
+| **max_width** <br> [Unit](unit.md) |  |
+| **min_width** <br> [Unit](unit.md) |  |
+| **min_height** <br> [Unit](unit.md) |  |
+| **layout_left** <br> [Unit](unit.md) |  |
+| **layout_right** <br> [Unit](unit.md) |  |
+| **layout_top** <br> [Unit](unit.md) |  |
+| **layout_bottom** <br> [Unit](unit.md) |  |
+| **layout_margin** <br> [Unit](unit.md) |  |
+| **layout_margin_left** <br> [Unit](unit.md) |  |
+| **layout_margin_right** <br> [Unit](unit.md) |  |
+| **layout_margin_top** <br> [Unit](unit.md) |  |
+| **layout_margin_bottom** <br> [Unit](unit.md) |  |
 | **padding** |  |
 | **padding_left** |  |
 | **padding_right** |  |
