@@ -12,7 +12,7 @@ Here you can find a list of all possible [Views](views.md).
 | **meta** <br> Object | Container for additional meta data on each View Component. |
 | **feature_labels** <br> Array | An Array containing feature labels that describe the view content. |
 | **child_views** <br> Array | The main Container for additional child views within the view. |
-| **background_color** <br> Object |  |
+| **background_color** <br> [Color](color.md) |  |
 | **background_image** <br> URI|  |
 | **background_tile_mode** <br> Array | Defines the fill mode of the background tile. Possible options are: <br><br> `repeat_x, repeat_y, repeat` |
 | **background_image_position** <br> String | Defines the background image position. Possible options are: <br><br> `left_top`, `left_center`, `left_bottom`, `center_top`, `center_center`, `center_bottom`, `right_top`, `right_center`, `right_bottom` |
