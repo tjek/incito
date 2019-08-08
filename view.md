@@ -8,7 +8,7 @@ Here you can find a list of all possible [Views](views.md).
 | Properties | Description |
 |:--|:--|
 | **id** <br> String | The unique view id, which can be used for later reference. |
-| **role** <br> String | Specifies the role of the view within the publication. <br><br> For example: `role: “section”` |
+| **role** <br> String | Specifies the role of the view within the publication. <br><br> For example: `section`, `offer`. |
 | **meta** <br> Object | Container for additional meta data on each View Component. |
 | **feature_labels** <br> Array | An Array containing feature labels that describe the view content. |
 | **child_views** <br> Array | The main Container for additional child views within the view. |
