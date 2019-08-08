@@ -6,7 +6,7 @@ Properties shared by all view component types.
 Here you can find a list of all possible [Views](views.md).
 
 | Properties | Description |
-|:--|:--|
+| :-- | :-- |
 | **id** <br> String | The unique view id, which can be used for later reference. <br><br> Minimum Length: `1`. |
 | **role** <br> String | Specifies the role of the view within the publication. <br><br> For example: `section`, `offer`. <br><br> Minimum Length: `1`. |
 | **meta** <br> Object | Container for additional meta data with at least one of multiple properties. |
@@ -23,34 +23,34 @@ Here you can find a list of all possible [Views](views.md).
 | **clip_children** <br> Boolean | Defines if the child views are clipped to the root view. `?` |
 | **title** <br> String | The title of the view. Should be plain text; HTML or Markdown formatting is not supported. |
 | **link** <br> URI | The optional link property defines the URL the view links to. This could be the products detail page on the retailers webshop page. |
-| **layout_width** <br> * | The width (as unit) that the individual view was designed for. <br><br> The width of the view cannot be negative and is limited by a maximum width of 1200 points for the overall publication width. <br><br> Minimum: 1 <br> Possible types: [Unit](unit.md) |
-| **layout_height** <br> * | The height (as unit) that the view was designed for. <br><br> The height of the view cannot be negative. <br><br> Minimum: 1 <br> Possible types: [Unit](unit.md) |
-| **max_height** <br> * | The maximum height (as unit) that the view is designed for. <br><br> Use the maximum height to ensure that the view won't be scaled down below a given treshold on mobile devices. <br><br> For example: `px`, `%`.  <br><br> Possible types: [Unit](unit.md) |
-| **max_width** <br> * | <br><br> Possible types: [Unit](unit.md) |
-| **min_width** <br> * | <br><br> Possible types: [Unit](unit.md) |
-| **min_height** <br> * | <br><br> Possible types: [Unit](unit.md) |
-| **layout_left** <br> * | <br><br> Possible types: [Unit](unit.md) |
-| **layout_right** <br> * | <br><br> Possible types: [Unit](unit.md) |
-| **layout_top** <br> * | <br><br> Possible types: [Unit](unit.md) |
-| **layout_bottom** <br> * | <br><br> Possible types: [Unit](unit.md) |
-| **layout_margin** <br> * | <br><br> Possible types: [Unit](unit.md) |
-| **layout_margin_left** <br> * | <br><br> Possible types: [Unit](unit.md) |
-| **layout_margin_right** <br> * | <br><br> Possible types: [Unit](unit.md) |
-| **layout_margin_top** <br> * | <br><br> Possible types: [Unit](unit.md) |
-| **layout_margin_bottom** <br> * | <br><br> Possible types: [Unit](unit.md) |
+| **layout_width** <br> * | The width (as unit) that the individual view was designed for. <br><br> The width of the view cannot be negative and is limited by a maximum width of 1200 points for the overall publication width. <br><br> Minimum: 1 <br> Possible types: [Unit](unit.md), integer |
+| **layout_height** <br> * | The height (as unit) that the view was designed for. <br><br> The height of the view cannot be negative. <br><br> Minimum: 1 <br> Possible types: [Unit](unit.md), integer |
+| **max_height** <br> * | The maximum height (as unit) that the view is designed for. <br><br> Use the maximum height to ensure that the view won't be scaled down below a given treshold on mobile devices. <br><br> Possible types: [Unit](unit.md), integer |
+| **max_width** <br> * | The maximum width (as unit) that the viwe is designed for. The number cannot be negative or 0. <br><br> Use the maximum width to ensure that the view won't be scaled down below a given treshold on mobile devices.  <br><br> Possible types: [Unit](unit.md), integer |
+| **min_width** <br> * | The minimum width the view is designed for. This ensure that the view is never scaled down below the given treshold to provide a readable experience on any viewpoint. <br><br> The number cannot be negative or 0. By default this number is ommited and only the layout width is considered. <br><br> Possible types: [Unit](unit.md) |
+| **min_height** <br> * | The minimum height the view is designed for. This ensure that the view is never scaled down below the given treshold to provide a readable experience on any viewpoint. <br><br> The number cannot be negative or 0. By default this number is ommited and only the layout height is considered. <br><br> Possible types: [Unit](unit.md) |
+| **layout_left** <br> * | The absolute position of the view's left border. If this numebr is negative, the content of the view is exceeding the viewpoint which may result in the loss of visible points.  <br><br> Possible types: [Unit](unit.md) `?` |
+| **layout_right** <br> * | The absolute position of the view's right border. If this numebr is negative, the content of the view is exceeding the viewpoint which may result in the loss of visible points. <br><br> Possible types: [Unit](unit.md) |
+| **layout_top** <br> * | The absolute position of the view's top border. If this numebr is negative, the content of the view is exceeding the viewpoint which may result in the loss of visible points. <br><br> Possible types: [Unit](unit.md) |
+| **layout_bottom** <br> * | The absolute position of the view's bottom border. If this numebr is negative, the content of the view is exceeding the viewpoint which may result in the loss of visible points. <br><br> Possible types: [Unit](unit.md) |
+| **layout_margin** <br> * | The outer (left, top, right, bottom) margin that is applied to the view. If this property is ommitted, the default margin that is applied is 0. If the margin is set to a negative, the number is set to 0. <br><br> Minimum: 0 <br> Possible types: [Unit](unit.md) |
+| **layout_margin_left** <br> * | The outer (left) margin that is applied to the view. If this property is ommitted, the default margin that is applied is 0. If the margin is set to a negative, the number is set to 0. <br><br> Minimum: 0 <br> Possible types: [Unit](unit.md) |
+| **layout_margin_right** <br> * | The outer (rigth) margin that is applied to the view. If this property is ommitted, the default margin that is applied is 0. If the margin is set to a negative, the number is set to 0. <br><br> Minimum: 0 <br> Possible types: [Unit](unit.md) |
+| **layout_margin_top** <br> * | The outer (top) margin that is applied to the view. If this property is ommitted, the default margin that is applied is 0. If the margin is set to a negative, the number is set to 0. <br><br> Minimum: 0 <br> Possible types: [Unit](unit.md) |
+| **layout_margin_bottom** <br> * | The outer (bottom) margin that is applied to the view. If this property is ommitted, the default margin that is applied is 0. If the margin is set to a negative, the number is set to 0. <br><br> Minimum: 0 <br> Possible types: [Unit](unit.md) |
 | **padding** <br> * | The outer (left, top, right, bottom) padding of the view. If this property is ommitted, the default padding that is applied is 0. If the padding is set to a negative, the number is set to 0. <br><br> Minimum: 0 <br> Possible types: [Unit](unit.md) |
 | **padding_left** <br> * | The outer (left) padding of the view. If this property is ommitted, the default padding that is applied is 0. If the padding is set to a negative, the number is set to 0. <br><br> Minimum: 0 <br> Possible types: [Unit](unit.md), Integer |
 | **padding_right** <br> * | The outer (right) padding of the view. If this property is ommitted, the default padding that is applied is 0. If the padding is set to a negative, the number is set to 0. <br><br> Minimum: 0 <br> Possible types: [Unit](unit.md), Integer |
 | **padding_top** <br> * | The outer (top) padding of the view. If this property is ommitted, the default padding that is applied is 0. If the padding is set to a negative, the number is set to 0. <br><br> Minimum: 0 |
 | **padding_bottom** * | The outer (bottom) padding of the view. If this property is ommitted, the default padding that is applied is 0. If the padding is set to a negative, the number is set to 0. <br><br> Minimum: 0 |
-| **transform_scale** <br> Number | The number that defines the  |
-| **transform_translate_x** <br> * |  |
+| **transform_scale** <br> Number | The number that defines the scale used when the origin of the view is transformed.  |
+| **transform_translate_x** <br> * | The value  |
 | **transform_translate_y** <br> * |  |
-| **transform_rotate** <br> Number | Defines the rotation... <br><br> Minimum: -360 <br> Maximum: 360 |
+| **transform_rotate** <br> Number | Defines the rotation that is applied to the view. If noting is specified, this number will default to 0. <br><br> Minimum: -360 <br> Maximum: 360 |
 | **transform_origin** <br> [String] |  |
-| **stroke_color** <br> [Color](color.md) |  |
-| **stroke_width** |  |
-| **stroke_style** | The string defining the stroke style of the view. <br><br> For example: <br><br> -solid: _____<br><br> Possible options are: <br><br> `solid`, dotted, dashed` |
+| **stroke_color** <br> [Color](color.md) | The string that defines the stroke color that is applied to the view. |
+| **stroke_width** | The width (in points) of the applied stroke. By default this number will be set to 0. |
+| **stroke_style** | The string defining the stroke style of the view. <br><br> Possible values: `solid`, `dotted` or `dashed`. |
 | **stroke_top_width** |  |
 | **stroke_top_color** <br> [Color](color.md) |  |
 | **stroke_right_width** |  |
