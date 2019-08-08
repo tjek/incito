@@ -13,7 +13,7 @@ The following table give you an overview of the views that can be used to create
 | View category | View type |
 |:--|:--|
 | View | [FallbackView](fallbackView.md), [TextView](textView.md), [ImageView](imageView.md), [VideoEmbedView](videoEmbedView.md), [VideoView](videoView.md) |
-| Layout | [AbsoluteLayout](absolyteLayout.md), [FlexLayout](flexLayout.md) |
+| Layout | [AbsoluteLayout](absoluteLayout.md), [FlexLayout](flexLayout.md) |
 |  |  |
 
 
