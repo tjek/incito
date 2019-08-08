@@ -14,6 +14,7 @@ ____________________________________________________
 | **layout_flex_align_items** <br> String | Determines the flex layout alignment of all contained elements. <br><br> For example: `flex-start` aligns all elements at the top of the containing view, while `flex-end` aligns all elements at the bottom of the parent-view container. <br><br> Possible values: `flex-start`, `flex-end`, `center`, `stretch`, `baseline`. |
 | **layout_flex_justify_items** <br> String | Defines how the elements inside the parent node are justified. <br><br> Possible values: `flex-start`, `flex-end`, `center`, `space-between`, `space-around`. |
 | **layout_flex_direction** <br> String | String that defines the direction of the layout. <br><br> Possible values: `row`, `column`. |
+| **child_views** <br> [Views](views.md) | Contains all nested child views contained in the parent container |
 
 ____________________________________________________
 
