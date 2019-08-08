@@ -3,6 +3,8 @@ Incito.viewComponent.view
 
 Properties shared by all view component types.
 
+Here you can find a list of all possible [Views](views.md).
+
 | Properties | Description |
 |:--|:--|
 | **id** <br> String | The unique view id, which can be used for later reference. |
