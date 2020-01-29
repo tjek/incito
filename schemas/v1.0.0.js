@@ -429,7 +429,15 @@ const schema = {
                 minimum: 0
             },
             text_style: {
-                type: 'string'
+                type: 'string',
+                enum: ['bold', 'italic', 'bold|italic']
+            },
+            text_decoration_line: {
+                type: 'array',
+                items: {
+                    type: 'string',
+                    enum: ['overline', 'line-through', 'underline']
+                }
             },
             text_prevent_widow: {
                 type: 'boolean'
