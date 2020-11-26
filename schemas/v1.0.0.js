@@ -439,6 +439,9 @@ const schema = {
                     enum: ['overline', 'line-through', 'underline']
                 }
             },
+            text_shadow: {
+                type: 'string'
+            },
             text_prevent_widow: {
                 type: 'boolean'
             },
@@ -530,6 +533,11 @@ const schema = {
             },
             mime: {
                 type: 'string'
+            },
+            link: {
+                type: 'string',
+                description: 'The URL the video links to',
+                format: 'uri'
             }
         }, [
             'src',
