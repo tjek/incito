@@ -533,11 +533,6 @@ const schema = {
             },
             mime: {
                 type: 'string'
-            },
-            link: {
-                type: 'string',
-                description: 'The URL the video links to',
-                format: 'uri'
             }
         }, [
             'src',
