@@ -439,6 +439,9 @@ const schema = {
                     enum: ['overline', 'line-through', 'underline']
                 }
             },
+            text_shadow: {
+                type: 'string'
+            },
             text_prevent_widow: {
                 type: 'boolean'
             },
